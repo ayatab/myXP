@@ -13,6 +13,18 @@ import Form from 'react-bootstrap/Form';
 
 export default function Header(props) {
 
+    const navList = ["Home", "Connection", "Game", "Notification", "Jobs", "Messaging"];
+
+    const navButtons = navList.map((navName) => {
+        const component = (<li className="nav-item d-flex">
+            <Nav.Link className="d-flex flex-column" href="#">
+                <img className="nav-icon" src={'pics/' + navName + '.svg'} alt='' />
+                <span>{navName}</span>
+            </Nav.Link>
+        </li>);
+        return component;
+    })
+
     return (
         <Navbar className="headerColor" collapseOnSelect expand="lg" variant="dark">
             <Container>
@@ -42,18 +54,16 @@ export default function Header(props) {
                         </Form>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#">
-                            {/* <div>
-                                <img src='pics/home.png' alt=''/>
-                            </div> */}
-                            <span>Home</span>
-                        </Nav.Link>
-                        <Nav.Link href="#">Connection</Nav.Link>
-                        <Nav.Link href="#">Game</Nav.Link>
-                        <Nav.Link href="#">Notification</Nav.Link>
-                        <Nav.Link href="#">Jobs</Nav.Link>
-                        <Nav.Link href="#">Messaging</Nav.Link>
-                        <Nav.Link href="#">Profile</Nav.Link>
+                        <ul className="navbar-nav nav-justified w-100 text-center">
+                            {navButtons}
+                        </ul>
+                        {/* <Nav.Link className="d-flex flex-column" href="#">
+                            <img className="nav-icon" src='pics/profile.svg' alt='' />
+                            <span>Profile</span>
+                        </Nav.Link> */}
+                    </Nav>
+                    <Nav>
+                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

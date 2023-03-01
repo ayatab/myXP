@@ -21,6 +21,8 @@ code {
   background-color: #F5F5F5;
 }
 
+/* navbar */
+
 .navbar {
   height: 82px;
 }
@@ -41,6 +43,20 @@ code {
 
 .nav-link {
   color: white;
+}
+
+.nav-icon {
+  height: 20px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li {
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 /* ALL PROFILE CARD STUFF */
