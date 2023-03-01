@@ -2,13 +2,13 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Home.js';
 import Header from './Header.js';
-// import ProfilePage from './ProfilePage.js';
+import ProfilePage from './ProfilePage.js';
 
 
 function App(props) {
 
     return (
-        <div>
+        <div className='page-background'>
             <Header />
             <Routes>
                 <Route index element={<ProfilePage />}></Route>

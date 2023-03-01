@@ -17,6 +17,10 @@ code {
   font-family: 'Figtree', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
 }
 
+.page-background {
+  background-color: #F5F5F5;
+}
+
 .navbar {
   height: 82px;
 }
@@ -31,10 +35,46 @@ code {
 
 .form-control {
   border-radius: 40px;
-  height: 42px;  
+  height: 42px;
   width: 242px;
 }
 
 .nav-link {
   color: white;
+}
+
+/* ALL PROFILE CARD STUFF */
+
+.profile-card {
+  border-radius: 3em;
+}
+
+.profile-background {
+  height: 150px;
+  object-fit: cover;
+  border-radius: 3em 3em 0 0;
+}
+
+.profile-img {
+  height: 7rem;
+  width: 7rem;
+  transform: translate(30%, -80%);
+}
+
+.gamer-tag {
+  position: absolute;
+  left: 20%;
+  top: 47%;
+  color: white;
+  font-weight: 700;
+}
+
+.card-body-height {
+  height: 75px;
+}
+
+.status {
+  position: absolute;
+  left: 20%;
+  bottom: 15%;
 }
