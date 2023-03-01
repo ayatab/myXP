@@ -3,7 +3,7 @@ import React from 'react';
 export default function ProfilePage(props) {
 
     return (
-        <div>
+        <div className="container">
             <HeaderCard></HeaderCard>
             <div className='d-flex m-4 justify-content-center'>
                 <a className="btn" href="#" role="button">Games</a>
