@@ -8,3 +8,19 @@ export default function ProfilePage(props) {
         </div>
     )
 }
+
+function HeaderCard(props) {
+    return (
+        <div>
+
+        </div>
+    )
+}
+
+function ExperienceCard(props) {
+    return (
+        <div>
+            
+        </div>
+    )
+}
