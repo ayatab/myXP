@@ -16,12 +16,13 @@ export default function Header(props) {
     const navList = ["Home", "Connection", "Game", "Notification", "Jobs", "Messaging"];
 
     const navButtons = navList.map((navName) => {
-        const component = (<li className="nav-item d-flex">
-            <Nav.Link className="d-flex flex-column" href="#">
-                <img className="nav-icon" src={'pics/' + navName + '.svg'} alt='' />
-                <span>{navName}</span>
-            </Nav.Link>
-        </li>);
+        const component = (
+            <li className="nav-item d-flex">
+                <Nav.Link className="d-flex flex-column" href="#">
+                    <img className="nav-icon" src={'pics/' + navName + '.svg'} alt='' />
+                    <span className="nav-text">{navName}</span>
+                </Nav.Link>
+            </li>);
         return component;
     })
 
@@ -63,7 +64,7 @@ export default function Header(props) {
                         </Nav.Link> */}
                     </Nav>
                     <Nav>
-                        
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
