@@ -45,6 +45,7 @@ code {
 
 /* ALL PROFILE CARD STUFF */
 
+
 .profile-card {
   border-radius: 3em;
 }
@@ -58,23 +59,47 @@ code {
 .profile-img {
   height: 7rem;
   width: 7rem;
-  transform: translate(30%, -80%);
+  transform: translate(30%, -125%);
 }
 
 .gamer-tag {
-  position: absolute;
-  left: 20%;
-  top: 47%;
+  /* position: absolute; */
+  /* left: 13%;
+  top: 47%; */
+  transform: translate(13%, -80%);
   color: white;
   font-weight: 700;
 }
 
 .card-body-height {
-  height: 75px;
+  height: 2em;
 }
 
 .status {
-  position: absolute;
-  left: 20%;
-  bottom: 15%;
+  /* position: absolute;
+  left: 13%;
+  bottom: 15%; */
+  transform: translate(13%, -250%);
+}
+
+/* ALL GAME CARD STUFF */
+
+.experience-header {
+  font-weight: 700;
+}
+
+.stat-cluster {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.stat-card {
+  background-color: #EEF3FF;
+  border-radius: 2em;
+}
+
+.stat-number {
+  font-size: 3em;
+  font-weight: bold;
+  color: #058F76;
 }
