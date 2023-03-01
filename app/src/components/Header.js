@@ -11,8 +11,7 @@ import Form from 'react-bootstrap/Form';
 // import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 
-export default function ApoioHeader(props) {
-
+export default function Header(props) {
 
     return (
         <Navbar className="headerColor" collapseOnSelect expand="lg" variant="dark">
