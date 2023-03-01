@@ -1,13 +1,15 @@
 import React from 'react';
-// import ProfilePage from './ProfilePage.js';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Home.js';
-import ProfilePage from './ProfilePage.js';
+import Header from './Header.js';
+// import ProfilePage from './ProfilePage.js';
+
 
 function App(props) {
 
     return (
         <div>
+            <Header />
             <Routes>
                 <Route index element={<ProfilePage />}></Route>
             </Routes>
