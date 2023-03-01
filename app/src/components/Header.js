@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Form from 'react-bootstrap/Form';
+// import Button from 'react-bootstrap/Button';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 // import Button from 'react-bootstrap/Button';
 // import Form from 'react-bootstrap/Form';
@@ -13,15 +15,32 @@ export default function ApoioHeader(props) {
 
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className="headerColor" collapseOnSelect expand="lg" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="#home">
+                    <img
+                        src="pics/myxp.png"
+                        width="53"
+                        height="45"
+                        className="d-inline-block align-top"
+                        alt="React Bootstrap logo"
+                    />
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-
+                        <Form className="d-flex" onSubmit={null}>
+                            <div className="input-group">
+                                <Form.Control
+                                    type="search"
+                                    placeholder="Search"
+                                    aria-label="Search"
+                                    value={""}
+                                    onChange={null}
+                                // ON SUBMIT NEEDS PREVENTDEFAULT
+                                />
+                            </div>
+                        </Form>
                     </Nav>
                     <Nav>
                         <Nav.Link href="#">Home</Nav.Link>
