@@ -43,7 +43,12 @@ export default function ApoioHeader(props) {
                         </Form>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#">Home</Nav.Link>
+                        <Nav.Link href="#">
+                            {/* <div>
+                                <img src='pics/home.png' alt=''/>
+                            </div> */}
+                            <span>Home</span>
+                        </Nav.Link>
                         <Nav.Link href="#">Connection</Nav.Link>
                         <Nav.Link href="#">Game</Nav.Link>
                         <Nav.Link href="#">Notification</Nav.Link>
