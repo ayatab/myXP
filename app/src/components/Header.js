@@ -13,7 +13,6 @@ import Form from 'react-bootstrap/Form';
 
 export default function ApoioHeader(props) {
 
-
     return (
         <Navbar className="headerColor" collapseOnSelect expand="lg" variant="dark">
             <Container>
