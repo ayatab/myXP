@@ -82,7 +82,7 @@ a {
 }
 
 .gamer-tag {
-  /* position: absolute; */
+  /* position: relative; */
   /* left: 13%;
   top: 47%; */
   transform: translate(13%, -80%);

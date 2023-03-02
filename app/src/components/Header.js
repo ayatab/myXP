@@ -13,7 +13,7 @@ import Form from 'react-bootstrap/Form';
 
 export default function Header(props) {
 
-    const navList = ["Home", "Connection", "Game", "Notification", "Jobs", "Messaging"];
+    const navList = ["Home", "Connection", "Game", "Notification", "Jobs", "Messaging", "Profile"];
 
     const navButtons = navList.map((navName) => {
         const component = (
