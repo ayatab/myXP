@@ -18,7 +18,7 @@ code {
 }
 
 .page-background {
-  background-color: #F5F5F5;
+  background-color: #ECECEC;
 }
 
 /* navbar */
@@ -121,4 +121,14 @@ a {
   font-size: 3em;
   font-weight: bold;
   color: #058F76;
+}
+
+/* EXPERIENCE CARD */
+
+.experience-header {
+  font-family: 'all-round-gothic';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
 }

@@ -170,180 +170,41 @@ function ExperienceCard(props) {
         <div className='mx-5 px-0'>
             <div className='bg-white card border-light profile-card py-4'>
                 <div className='d-flex mx-5 mt-2 mb-0 justify-content-between'>
-                    <h4 className='experience-header'>Experience</h4>
+                    <h1 className='experience-header'>Experience</h1>
                     <p>EDIT</p>
                 </div>
                 <div className='mt-0 p-0'>
                     <hr className='mt-0 mx-5' />
                 </div>
                 {/* Experience */}
-                <div className="d-flex row stat-cluster text-center">
-                    <div className="col-2 card m-3 border-light stat-card">
-                        <div className="card-body">
-                            <h5 className="card-title">WINS</h5>
-                            <p className="card-text stat-number">3,700</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Win%</h5>
-                            <p className="card-text stat-number">89.1%</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
+                <div className="d-flex row stat-cluster">
+                    <div className="experience-box">
+                        <h5>Sentinels Valorant IGL</h5>
+                        <h6>Dec 2019 - Present</h6>
+                        <p></p>
                     </div>
                 </div>
 
                 <div className='d-flex mx-5 mt-5 mb-0 justify-content-between'>
                     <h4 className='experience-header'>Tournament History</h4>
-                    <p>Edit</p>
                 </div>
                 <div className='mt-0 p-0'>
                     <hr className='mt-0 mx-5' />
                 </div>
                 {/* Tournament History */}
                 <div className="d-flex row stat-cluster text-center">
-                    <div className="col-2 card m-3 border-light stat-card">
-                        <div className="card-body">
-                            <h5 className="card-title">WINS</h5>
-                            <p className="card-text stat-number">3,700</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Win%</h5>
-                            <p className="card-text stat-number">89.1%</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div className='d-flex mx-5 mt-5 mb-0 justify-content-between'>
                     <h4 className='experience-header'>Education</h4>
-                    <p>Edit</p>
                 </div>
                 <div className='mt-0 p-0'>
                     <hr className='mt-0 mx-5' />
                 </div>
                 {/* Education */}
                 <div className="d-flex row stat-cluster text-center">
-                    <div className="col-2 card m-3 border-light stat-card">
-                        <div className="card-body">
-                            <h5 className="card-title">WINS</h5>
-                            <p className="card-text stat-number">3,700</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Win%</h5>
-                            <p className="card-text stat-number">89.1%</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
-                    <div className="col-2 card m-3 border-light stat-card">
-
-                        <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
-                        </div>
-                    </div>
+                    
                 </div>
 
             </div>
