@@ -4,13 +4,21 @@ export default function ProfilePage(props) {
 
     return (
         <div className="container">
-            <HeaderCard />
-            <div className='d-flex m-4 justify-content-center'>
+            {/* <HeaderCard /> */}
+            {/* <div className='d-flex m-4 justify-content-center'>
                 <a className="btn" href="#" role="button">Games</a>
                 <a className="btn" href="#" role="button">Experience</a>
+            </div> */}
+            <div className='row'>
+                <div className='col-4'>
+                    <InfoCard />
+                </div>
+                <div className='col'>
+                    {/* <ExperienceCard /> */}
+                </div>
             </div>
+
             {/* <GamesCard /> */}
-            <ExperienceCard />
         </div>
     )
 }
@@ -167,15 +175,13 @@ function GamesCard(props) {
 
 function ExperienceCard(props) {
     return (
-        <div className='mx-5 px-0'>
-            <div className='bg-white card border-light profile-card py-4'>
-                <div className='d-flex mx-5 mt-2 mb-0 justify-content-between'>
-                    <h1 className='experience-header'>Experience</h1>
-                    <p>EDIT</p>
+        <div className='bg-white card info-card border-light profile-card'>
+            <div className='card-body'>
+                <div className='d-flex justify-content-between'>
+                    <h1 className='header-text'>Experience</h1>
+                    {/* <p>EDIT</p> */}
                 </div>
-                <div className='mt-0 p-0'>
-                    <hr className='mt-0 mx-5' />
-                </div>
+                <hr />
                 {/* Experience */}
                 <div className="d-flex row stat-cluster">
                     <div className="experience-box">
@@ -193,7 +199,7 @@ function ExperienceCard(props) {
                 </div>
                 {/* Tournament History */}
                 <div className="d-flex row stat-cluster text-center">
-                    
+
                 </div>
 
                 <div className='d-flex mx-5 mt-5 mb-0 justify-content-between'>
@@ -204,9 +210,20 @@ function ExperienceCard(props) {
                 </div>
                 {/* Education */}
                 <div className="d-flex row stat-cluster text-center">
-                    
-                </div>
 
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function InfoCard(props) {
+    return (
+        <div class="card info-card border-0"   >
+            <div class="card-body">
+                <h1 class="card-title header-text">Card title</h1>
+                <hr />
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
     )

@@ -58,12 +58,11 @@ a {
   font-size: 16px;
 }
 
-.navbar-nav ul li {
+/* .navbar-nav ul li {
   padding-right: 2%;
-}
+} */
 
 /* ALL PROFILE CARD STUFF */
-
 
 .profile-card {
   border-radius: 2em;
@@ -88,6 +87,7 @@ a {
   transform: translate(13%, -80%);
   color: white;
   font-weight: 700;
+  width: auto;
 }
 
 .card-body-height {
@@ -99,6 +99,13 @@ a {
   left: 13%;
   bottom: 15%; */
   transform: translate(13%, -250%);
+  width: auto;
+}
+
+hr {
+  color: black;
+  opacity: 1;
+  margin-top: 0;
 }
 
 /* ALL GAME CARD STUFF */
@@ -125,10 +132,18 @@ a {
 
 /* EXPERIENCE CARD */
 
-.experience-header {
+.header-text {
   font-family: 'all-round-gothic';
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
   line-height: 36px;
+}
+
+/* INFO CARD */
+
+.info-card {
+  padding: 32px;
+  margin : 32px;
+  border-radius: 2em;
 }
