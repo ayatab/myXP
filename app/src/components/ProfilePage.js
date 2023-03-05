@@ -4,11 +4,11 @@ export default function ProfilePage(props) {
 
     return (
         <div className="container">
-            {/* <HeaderCard /> */}
-            {/* <div className='d-flex m-4 justify-content-center'>
+            <HeaderCard />
+            <div className='d-flex m-4 justify-content-center'>
                 <a className="btn" href="#" role="button">Games</a>
                 <a className="btn" href="#" role="button">Experience</a>
-            </div> */}
+            </div>
             <div className='row'>
                 <div className='col-5 info-col'>
                     <InfoCard />
@@ -177,36 +177,52 @@ function ExperienceCard(props) {
     return (
         <div className='bg-white card info-card border-light profile-card'>
             <div className='card-body'>
-                <div className='d-flex justify-content-between'>
-                    <h1 className='header-text'>Experience</h1>
-                    {/* <p>EDIT</p> */}
-                </div>
-                <hr />
-                {/* Experience */}
-                <div className="d-flex row stat-cluster">
-                    <div className="experience-box">
-                        <h5>Sentinels Valorant IGL</h5>
-                        <h6>Dec 2019 - Present</h6>
-                        <p></p>
+                <div>
+                    <div className='d-flex justify-content-between'>
+                        <h1 className='header-text'>Experience</h1>
+                        {/* <p>EDIT</p> */}
+                    </div>
+                    <hr />
+                    {/* Experience */}
+                    <div className="d-flex row stat-cluster">
+                        <div className="experience-box">
+                            <h5>Sentinels Valorant IGL</h5>
+                            <h6>Dec 2019 - Present</h6>
+                            <p></p>
+                        </div>
                     </div>
                 </div>
 
-                <div className='d-flex mx-5 mt-5 mb-0 justify-content-between'>
-                    <h4 className='experience-header'>Tournament History</h4>
+                <div>
+                    <div className='d-flex justify-content-between'>
+                        <h1 className='header-text'>Tournament History</h1>
+                        {/* <p>EDIT</p> */}
+                    </div>
+                    <hr />
+                    {/* Experience */}
+                    <div className="d-flex row stat-cluster">
+                        <div className="experience-box">
+                            <h5>Sentinels Valorant IGL</h5>
+                            <h6>Dec 2019 - Present</h6>
+                            <p></p>
+                        </div>
+                    </div>
                 </div>
-                <div className='mt-0 p-0'>
-                    <hr className='mt-0 mx-5' />
-                </div>
-                {/* Tournament History */}
-                <div className="d-flex row stat-cluster text-center">
 
-                </div>
-
-                <div className='d-flex mx-5 mt-5 mb-0 justify-content-between'>
-                    <h4 className='experience-header'>Education</h4>
-                </div>
-                <div className='mt-0 p-0'>
-                    <hr className='mt-0 mx-5' />
+                <div>
+                    <div className='d-flex justify-content-between'>
+                        <h1 className='header-text'>Education</h1>
+                        {/* <p>EDIT</p> */}
+                    </div>
+                    <hr />
+                    {/* Experience */}
+                    <div className="d-flex row stat-cluster">
+                        <div className="experience-box">
+                            <h5>University of Washington</h5>
+                            <h6>Dec 2019 - Present</h6>
+                            <p></p>
+                        </div>
+                    </div>
                 </div>
                 {/* Education */}
                 <div className="d-flex row stat-cluster text-center">
