@@ -10,11 +10,11 @@ export default function ProfilePage(props) {
                 <a className="btn" href="#" role="button">Experience</a>
             </div> */}
             <div className='row'>
-                <div className='col-4'>
+                <div className='col-5 info-col'>
                     <InfoCard />
                 </div>
-                <div className='col'>
-                    {/* <ExperienceCard /> */}
+                <div className='col main-col'>
+                    <ExperienceCard />
                 </div>
             </div>
 
@@ -218,12 +218,67 @@ function ExperienceCard(props) {
 }
 
 function InfoCard(props) {
+    // const headList = ["Pronouns", "Based In", "Email", "Twitter"];
+
+    // const headMap = headList.map((headName) => {
+    //     const component = (
+    //         <li>
+    //             <div className="d-flex flex-grow-1 align-self-center">
+    //                 <img className="info-icon" src={"pics/profile/" + headName +".svg"} />
+    //                 <div className="d-flex flex-column">
+    //                     <h2 className="info-head">{headName}</h2>
+    //                     <p className="info-text">he/him</p>
+    //                 </div>
+    //             </div>
+    //         </li>
+    //     );
+    //     return component;
+    // })
+
     return (
         <div class="card info-card border-0"   >
             <div class="card-body">
-                <h1 class="card-title header-text">Card title</h1>
+                <h1 class="card-title header-text">Personal Information</h1>
                 <hr />
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <ul className="info-list">
+                    {/* {headMap} */}
+                    <li className="info-item">
+                        <div className="d-flex flex-grow-1 align-self-center">
+                            <img className="info-icon" src="pics/profile/Pronouns.svg" />
+                            <div className="d-flex flex-column">
+                                <h2 className="info-head">Pronouns:</h2>
+                                <p className="info-text">he/him</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li className="info-item">
+                        <div className="d-flex flex-grow-1 align-self-center">
+                            <img className="info-icon" src="pics/profile/Based In.svg" />
+                            <div className="d-flex flex-column">
+                                <h2 className="info-head">Based In:</h2>
+                                <p className="info-text">he/him</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li className="info-item">
+                        <div className="d-flex flex-grow-1 align-self-center">
+                            <img className="info-icon" src="pics/profile/Email.svg" />
+                            <div className="d-flex flex-column">
+                                <h2 className="info-head">Email:</h2>
+                                <p className="info-text">he/him</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li className="info-item">
+                        <div className="d-flex flex-grow-1 align-self-center">
+                            <img className="info-icon" src="pics/profile/Twitter.svg" />
+                            <div className="d-flex flex-column">
+                                <h2 className="info-head">Twitter:</h2>
+                                <p className="info-text">he/him</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     )

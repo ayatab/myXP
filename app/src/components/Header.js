@@ -19,7 +19,7 @@ export default function Header(props) {
         const component = (
             <li className="nav-item d-flex">
                 <Nav.Link className="d-flex flex-column" href="#">
-                    <img className="nav-icon" src={'pics/' + navName + '.svg'} alt='' />
+                    <img className="nav-icon" src={'pics/header/' + navName + '.svg'} alt='' />
                     <span className="nav-text">{navName}</span>
                 </Nav.Link>
             </li>);

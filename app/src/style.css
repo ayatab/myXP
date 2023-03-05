@@ -144,7 +144,55 @@ hr {
 /* INFO CARD */
 
 .info-card {
-  padding: 32px;
-  margin : 32px;
+  padding: 40px 60px 40px 60px;
+  margin: 32px;
   border-radius: 2em;
+}
+
+.info-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 1em;
+  /* text-indent: em; */
+}
+
+.info-head {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 0;
+}
+
+.info-text {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 164.52%;
+  margin-bottom: 0;
+}
+
+.info-icon {
+  margin-right: 32px;
+}
+
+.info-col {
+  padding-right: 0;
+  width: 37.35%;
+  flex: 0 0 37.35%;
+  max-width: 37.35%;
+}
+
+.main-col {
+  padding-left: 0;
+}
+
+.info-item {
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 0;
 }
