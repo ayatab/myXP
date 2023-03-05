@@ -17,8 +17,9 @@ code {
   font-family: 'Figtree', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
 }
 
-.page-background {
+body {
   background-color: #ECECEC;
+  height: 100%;
 }
 
 /* navbar */
