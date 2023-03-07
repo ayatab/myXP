@@ -4,11 +4,20 @@ export default function ProfilePage(props) {
 
     return (
         <div className="container">
-            <HeaderCard />
-            <div className='d-flex m-4 justify-content-center'>
-                <a className="btn" href="#" role="button">Games</a>
-                <a className="btn" href="#" role="button">Experience</a>
+            {/* <div className='row'> */}
+                <HeaderCard />
+            {/* </div> */}
+            <div className='row'>
+                <div className='col-5 info-col'>
+                </div>
+                <div className='col main-col'>
+                    <div className='d-flex my-2 justify-content-center'>
+                        <a className="btn profile-btn" href="#" role="button">Games</a>
+                        <a className="btn profile-btn" href="#" role="button">Experience</a>
+                    </div>
+                </div>
             </div>
+
             <div className='row'>
                 <div className='col-5 info-col'>
                     <InfoCard />
@@ -25,7 +34,7 @@ export default function ProfilePage(props) {
 
 function HeaderCard(props) {
     return (
-        <div className='mt-5 mx-5'>
+        // <div className='card info-cards '>
             <div className="d-flex flex-column justify-content-center bg-white card border-light profile-card">
                 <img src='pics/profilebackground.png' className='position-relative profile-background' />
                 <div className='gamer-tag'>
@@ -36,7 +45,7 @@ function HeaderCard(props) {
                 </div>
                 <div className='status'>I like dumb stuff lol</div>
             </div>
-        </div>
+        // </div>
     )
 }
 

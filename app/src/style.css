@@ -66,6 +66,8 @@ a {
 /* ALL PROFILE CARD STUFF */
 
 .profile-card {
+  /* padding: 40px 60px; */
+  margin: 32px;
   border-radius: 2em;
 }
 
@@ -137,7 +139,7 @@ hr {
   font-family: 'all-round-gothic';
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 36px;
 }
 
@@ -195,4 +197,8 @@ hr {
 
 .card-body {
   padding: 0;
+}
+
+.profile-btn {
+
 }
