@@ -1,19 +1,42 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 export default function ProfilePage(props) {
+
+    var isExperience = true;
+    var currentPage = <ExperienceCard />;
+
+    const handleClick = (event) => {
+        console.log("test");
+        // console.log(props.typePage);
+        // props.setTypePage(props.typePage);
+        if (isExperience) {
+            currentPage = <ExperienceCard />;
+        } else {
+            isExperience = false;
+            currentPage = <GamesCard />;
+
+        }
+    }
+
+    // const StyledLink = styled(Link)`
+    // font-size: 20px;
+    // line-height: 23px;
+    // font-style: 'all-round-gothic';
+    //     `;
 
     return (
         <div className="container">
             {/* <div className='row'> */}
-                <HeaderCard />
+            <HeaderCard />
             {/* </div> */}
             <div className='row'>
                 <div className='col-5 info-col'>
                 </div>
                 <div className='col main-col'>
-                    <div className='d-flex my-2 justify-content-center'>
-                        <a className="btn profile-btn" href="#" role="button">Games</a>
-                        <a className="btn profile-btn" href="#" role="button">Experience</a>
+                    <div className='d-flex my-3 justify-content-center'>
+                        <Link className="btn profile-btn btn-dark" onClick={handleClick} to="#">Experience</Link>
+                        <Link className="btn profile-btn btn-dark" onClick={handleClick} to="#">Games</Link>
                     </div>
                 </div>
             </div>
@@ -23,11 +46,12 @@ export default function ProfilePage(props) {
                     <InfoCard />
                 </div>
                 <div className='col main-col'>
-                    <ExperienceCard />
+                    {/* <ExperienceCard /> */}
+                    {/* <GamesCard /> */}
+                    {currentPage}
                 </div>
             </div>
 
-            {/* <GamesCard /> */}
         </div>
     )
 }
@@ -35,16 +59,16 @@ export default function ProfilePage(props) {
 function HeaderCard(props) {
     return (
         // <div className='card info-cards '>
-            <div className="d-flex flex-column justify-content-center bg-white card border-light profile-card">
-                <img src='pics/profilebackground.png' className='position-relative profile-background' />
-                <div className='gamer-tag'>
-                    <p>Horse_egg</p>
-                </div>
-                <div className='card-body card-body-height'>
-                    <img src='pics/alexpic.png' className='card-img mx-auto profile-img'></img>
-                </div>
-                <div className='status'>I like dumb stuff lol</div>
+        <div className="d-flex flex-column justify-content-center bg-white card border-light profile-card">
+            <img src='pics/profilebackground.png' className='position-relative profile-background' />
+            <div className='gamer-tag d-inline-block'>
+                <p>Horse_egg</p>
             </div>
+            <div className='card-body card-body-height'>
+                <img src='pics/alexpic.png' className='card-img mx-auto profile-img'></img>
+            </div>
+            <div className='status'>I like dumb stuff lol</div>
+        </div>
         // </div>
     )
 }
