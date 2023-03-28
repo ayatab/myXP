@@ -44,6 +44,8 @@ export default function ProfilePage(props) {
             <div className='row'>
                 <div className='col-5 info-col'>
                     <InfoCard />
+                    <div className='p-4'></div>
+                    <InterestCard />
                 </div>
                 <div className='col main-col'>
                     {/* <ExperienceCard /> */}
@@ -61,12 +63,12 @@ function HeaderCard(props) {
         // <div className='card info-cards '>
         <div className="d-flex flex-column justify-content-center bg-white card border-light profile-card">
             <img src='pics/profilebackground.png' className='position-relative profile-background' />
-            <div className='gamer-tag d-inline-block'>
-                <p>Horse_egg</p>
+            <div className='gamer-tag'>
+                <p className='m-0'>Horse_egg</p>
             </div>
-            <div className='card-body card-body-height'>
-                <img src='pics/alexpic.png' className='card-img mx-auto profile-img'></img>
-            </div>
+            {/* <div className='card-body card-body-height'> */}
+            <img src='pics/alexpic.png' className='card-img mx-auto profile-img'></img>
+            {/* </div> */}
             <div className='status'>I like dumb stuff lol</div>
         </div>
         // </div>
@@ -328,6 +330,20 @@ function InfoCard(props) {
                         </div>
                     </li>
                 </ul>
+            </div>
+        </div>
+    )
+}
+
+function InterestCard(props) {
+    return (
+        <div class="card info-card border-0"   >
+            <div class="card-body">
+                <h1 class="card-title header-text">Personal Information</h1>
+                <hr />
+            </div>
+            <div className='m-0 interest-block'>
+                <p className='m-1'>Hiking</p>
             </div>
         </div>
     )
