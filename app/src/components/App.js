@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Home.js';
 import Header from './Header.js';
 import ProfilePage from './ProfilePage.js';
-// import ProfilePage from './ProfilePage.js';
 
 
 function App(props) {
 
     return (
-        <div>
+        <div className='page-background'>
             <Header />
             <Routes>
-                <Route index element={<Home />}></Route>
+                <Route index element={<ProfilePage />}></Route>
             </Routes>
 
         </div>
