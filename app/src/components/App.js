@@ -7,13 +7,14 @@ import ProfilePage from './ProfilePage.js';
 
 function App(props) {
 
+    const [isExperience, setIsExperience] = useState(true);
+
     return (
         <div className='page-background'>
             <Header />
             <Routes>
-                <Route index element={<ProfilePage />}></Route>
+                <Route index element={<ProfilePage currentView={isExperience} />} ></Route>
             </Routes>
-
         </div>
     )
 
