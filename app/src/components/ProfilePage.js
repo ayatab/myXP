@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 export default function ProfilePage(props) {
 
-    var isExperience = true;
-    var currentPage = <ExperienceCard />;
+    const [isExperience, setIsExperience] = useState(props.currentView);
 
-    const handleClick = (event) => {
-        console.log("test");
-        // console.log(props.typePage);
-        // props.setTypePage(props.typePage);
-        if (isExperience) {
-            currentPage = <ExperienceCard />;
-        } else {
-            isExperience = false;
-            currentPage = <GamesCard />;
+    const active = "btn profile-btn btn-dark"
+    const inactive = "btn profile-btn"
 
-        }
+    let expStyle = active;
+    let gameStyle = inactive;
+
+    const changeExperience = (event) => {
+        console.log("exp");
+        expStyle = active;
+        gameStyle = inactive;
+        console.log("exp: " + expStyle);
+        console.log("game: " + gameStyle);
+        setIsExperience(true);
     }
+
+    const changeGames = (event) => {
+        console.log("games");
+        expStyle = inactive;
+        gameStyle = active;
+        console.log("exp: " + expStyle);
+        console.log("game: " + gameStyle);
+        setIsExperience(false);
+    }
+
+
 
     return (
         <div className="container">
@@ -28,10 +40,20 @@ export default function ProfilePage(props) {
                 <div className='col-5 info-col'>
                 </div>
                 <div className='col main-col'>
-                    <div className='d-flex my-3 justify-content-center'>
-                        <Link className="btn profile-btn btn-dark" onClick={handleClick} to="#">Experience</Link>
-                        <Link className="btn profile-btn btn-dark" onClick={handleClick} to="#">Games</Link>
-                    </div>
+                    {/* <div className='d-flex my-3 justify-content-center'> */}
+                        {isExperience && 
+                        <div className='d-flex my-3 justify-content-center'>
+                            <Link className={active} onClick={changeExperience} to="#">Experience</Link>
+                            <Link className={inactive} onClick={changeGames} to="#">Games</Link>
+                        </div>}
+                        {!isExperience && 
+                        <div className='d-flex my-3 justify-content-center'>
+                            <Link className={inactive} onClick={changeExperience} to="#">Experience</Link>
+                            <Link className={active} onClick={changeGames} to="#">Games</Link>
+                        </div>}
+
+
+                    {/* </div> */}
                 </div>
             </div>
 
@@ -42,12 +64,10 @@ export default function ProfilePage(props) {
                     <InterestCard />
                 </div>
                 <div className='col main-col'>
-                    {/* <ExperienceCard /> */}
-                    {/* <GamesCard /> */}
-                    {currentPage}
+                    {isExperience && <ExperienceCard />}
+                    {!isExperience && <GamesCard />}
                 </div>
             </div>
-
         </div>
     )
 }
@@ -281,9 +301,9 @@ function InfoCard(props) {
     // })
 
     return (
-        <div class="card info-card border-0"   >
-            <div class="card-body">
-                <h1 class="card-title header-text">Personal Information</h1>
+        <div className="card info-card border-0"   >
+            <div className="card-body">
+                <h1 className="card-title header-text">Personal Information</h1>
                 <hr />
                 <ul className="info-list">
                     {/* {headMap} */}
@@ -331,9 +351,9 @@ function InfoCard(props) {
 
 function InterestCard(props) {
     return (
-        <div class="card info-card border-0"   >
-            <div class="card-body">
-                <h1 class="card-title header-text">Interests</h1>
+        <div className="card info-card border-0"   >
+            <div className="card-body">
+                <h1 className="card-title header-text">Interests</h1>
                 <hr />
             </div>
             <div className='m-0 interest-block'>
