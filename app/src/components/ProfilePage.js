@@ -19,12 +19,6 @@ export default function ProfilePage(props) {
         }
     }
 
-    // const StyledLink = styled(Link)`
-    // font-size: 20px;
-    // line-height: 23px;
-    // font-style: 'all-round-gothic';
-    //     `;
-
     return (
         <div className="container">
             {/* <div className='row'> */}
@@ -307,7 +301,7 @@ function InfoCard(props) {
                             <img className="info-icon" src="pics/profile/Based In.svg" />
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Based In:</h2>
-                                <p className="info-text">he/him</p>
+                                <p className="info-text">Seattle, WA</p>
                             </div>
                         </div>
                     </li>
@@ -316,7 +310,7 @@ function InfoCard(props) {
                             <img className="info-icon" src="pics/profile/Email.svg" />
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Email:</h2>
-                                <p className="info-text">he/him</p>
+                                <p className="info-text">AlexanderJHeng@gmail.com</p>
                             </div>
                         </div>
                     </li>
@@ -325,7 +319,7 @@ function InfoCard(props) {
                             <img className="info-icon" src="pics/profile/Twitter.svg" />
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Twitter:</h2>
-                                <p className="info-text">he/him</p>
+                                <p className="info-text">@HorseEggs22</p>
                             </div>
                         </div>
                     </li>
@@ -339,7 +333,7 @@ function InterestCard(props) {
     return (
         <div class="card info-card border-0"   >
             <div class="card-body">
-                <h1 class="card-title header-text">Personal Information</h1>
+                <h1 class="card-title header-text">Interests</h1>
                 <hr />
             </div>
             <div className='m-0 interest-block'>

@@ -83,7 +83,7 @@ a {
   width: 7rem;
   bottom: 25%;
   left: 5%
-  /* transform: translate(30%, -125%); */
+    /* transform: translate(30%, -125%); */
 }
 
 .gamer-tag {
@@ -232,7 +232,10 @@ hr {
 .interest-block {
   display: inline-block;
   width: min-content;
-  border: 2px solid black;
-  border-radius: 10px;
+  border: 1.5px solid #000000;
+  border-radius: 23.5px;
+}
 
+.interest-block p {
+  padding: 0px 20px;
 }
