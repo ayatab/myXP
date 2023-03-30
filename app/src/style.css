@@ -133,8 +133,11 @@ hr {
 }
 
 .stat-card {
+  margin-top: 1rem;
+  padding-top: 2rem;
   background-color: #EEF3FF;
   border-radius: 2em;
+  height: 12rem;
 }
 
 .stat-number {
@@ -199,6 +202,7 @@ hr {
 
 .main-col {
   padding-left: 0;
+  margin-left: 0;
 }
 
 .info-item {

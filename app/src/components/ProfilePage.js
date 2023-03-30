@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function ProfilePage(props) {
 
     var isExperience = true;
-    var currentPage = <ExperienceCard />;
+    var currentPage = <GamesCard />;
 
     const handleClick = (event) => {
         console.log("test");
@@ -20,7 +20,7 @@ export default function ProfilePage(props) {
     }
 
     return (
-        <div className="container">
+        <div className="container-fluid">
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
@@ -36,7 +36,7 @@ export default function ProfilePage(props) {
             </div>
 
             <div className='row'>
-                <div className='col-5 info-col'>
+                <div className='col-3 info-col'>
                     <InfoCard />
                     <div className='p-4'></div>
                     <InterestCard />
@@ -71,21 +71,19 @@ function HeaderCard(props) {
 
 function GamesCard(props) {
     return (
-        <div className='mx-5 px-0'>
-            <div className='bg-white card border-light profile-card'>
+        <div className='bg-white card info-card border-light profile-card'>
+            <div className='card-body'>
                 <a className="btn btn-dark my-5 mx-5" href="#" role="button">some placeholder cool button before i set up the actual button thing lol</a>
 
 
-                <div className='d-flex mx-5 mt-2 mb-0 justify-content-between'>
+                <div className='d-flex justify-content-between'>
                     <h4 className='experience-header'>SOLO</h4>
                     <p>4,154 Matches</p>
                 </div>
-                <div className='mt-0 p-0'>
-                    <hr className='mt-0 mx-5' />
-                </div>
+                <hr />
                 {/* this is all solo stats */}
-                <div className="d-flex row stat-cluster text-center">
-                    <div className="col-2 card m-3 border-light stat-card">
+                <div className="d-flex row stat-cluster text-center mx-2">
+                    <div className="col-3 card mx-2 border-light stat-card">
                         <div className="card-body">
                             <h5 className="card-title">WINS</h5>
                             <p className="card-text stat-number">3,700</p>
@@ -93,7 +91,7 @@ function GamesCard(props) {
 
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Win%</h5>
@@ -101,7 +99,7 @@ function GamesCard(props) {
                             <p className="card-text ">#11,626 - Top 0.1%</p>
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
@@ -109,7 +107,7 @@ function GamesCard(props) {
                             <p className="card-text ">#11,626 - Top 0.1%</p>
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
@@ -117,7 +115,7 @@ function GamesCard(props) {
                             <p className="card-text ">#11,626 - Top 0.1%</p>
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
@@ -125,7 +123,7 @@ function GamesCard(props) {
                             <p className="card-text ">#11,626 - Top 0.1%</p>
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
@@ -138,16 +136,14 @@ function GamesCard(props) {
 
 
 
-                <div className='d-flex mx-5 mt-5 mb-0 justify-content-between'>
+                <div className='d-flex mt-5 mb-0 justify-content-between'>
                     <h4 className='experience-header'>DUO</h4>
                     <p>4,154 Matches</p>
                 </div>
-                <div className='mt-0 p-0'>
-                    <hr className='mt-0 mx-5' />
-                </div>
+                <hr/>
                 {/* this is all solo stats */}
-                <div className="d-flex row stat-cluster text-center">
-                    <div className="col-2 card m-3 border-light stat-card">
+                <div className="d-flex row stat-cluster text-center mx-2">
+                    <div className="col-3 card mx-2 border-light stat-card">
                         <div className="card-body">
                             <h5 className="card-title">WINS</h5>
                             <p className="card-text stat-number">3,700</p>
@@ -155,7 +151,7 @@ function GamesCard(props) {
 
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Win%</h5>
@@ -163,7 +159,7 @@ function GamesCard(props) {
                             <p className="card-text ">#11,626 - Top 0.1%</p>
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
@@ -171,7 +167,7 @@ function GamesCard(props) {
                             <p className="card-text ">#11,626 - Top 0.1%</p>
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
@@ -179,7 +175,7 @@ function GamesCard(props) {
                             <p className="card-text ">#11,626 - Top 0.1%</p>
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
@@ -187,7 +183,7 @@ function GamesCard(props) {
                             <p className="card-text ">#11,626 - Top 0.1%</p>
                         </div>
                     </div>
-                    <div className="col-2 card m-3 border-light stat-card">
+                    <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
