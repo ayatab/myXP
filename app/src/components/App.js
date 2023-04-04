@@ -14,7 +14,7 @@ function App(props) {
         <div className='page-background'>
             <Header />
             <Routes>
-                <Route index element={<ProfilePage currentView={isExperience} />} ></Route>
+                <Route path='profile' element={<ProfilePage currentView={isExperience} />} ></Route>
                 <Route index element={<LandingPage />} ></Route>
                 <Route path='/home' element={<Home />} ></Route>
             </Routes>
@@ -22,5 +22,7 @@ function App(props) {
     )
 
 }
+
+export default App;
 
 export default App;

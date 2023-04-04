@@ -29,10 +29,8 @@ export default function ProfilePage(props) {
         setIsExperience(false);
     }
 
-
-
     return (
-        <div className="container-fluid">
+        <div className="container">
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
