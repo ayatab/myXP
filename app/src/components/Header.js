@@ -18,7 +18,7 @@ export default function Header(props) {
     const navButtons = navList.map((navName) => {
         const component = (
             <li className="nav-item d-flex p-2">
-                <Nav.Link className="d-flex flex-column" href="#">
+                <Nav.Link className="d-flex flex-column" to={"/" + navName.toLowerCase()}>
                     <img className="nav-icon" src={'pics/header/' + navName + '.svg'} alt='' />
                     <span className="nav-text">{navName}</span>
                 </Nav.Link>
