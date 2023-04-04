@@ -16,7 +16,7 @@ function App(props) {
             <Routes>
                 <Route path='profile' element={<ProfilePage currentView={isExperience} />} ></Route>
                 <Route index element={<LandingPage />} ></Route>
-                <Route path='/home' element={<Home />} ></Route>
+                <Route path='home' element={<Home />} ></Route>
             </Routes>
         </div>
     )
