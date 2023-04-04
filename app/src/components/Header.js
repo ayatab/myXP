@@ -17,7 +17,7 @@ export default function Header(props) {
 
     const navButtons = navList.map((navName) => {
         const component = (
-            <li className="nav-item d-flex p-2">
+            <li key={navName} className="nav-item d-flex p-2">
                 <NavLink className="d-flex flex-column" to={"/" + navName.toLowerCase()}>
                     <img className="nav-icon" src={'pics/header/' + navName + '.svg'} alt='' />
                     <span className="nav-text">{navName}</span>
@@ -47,7 +47,7 @@ export default function Header(props) {
                                     type="search"
                                     placeholder="Search"
                                     aria-label="Search"
-                                    value={""}
+                                    // value={""}
                                     onChange={null}
                                 // ON SUBMIT NEEDS PREVENTDEFAULT
                                 />
