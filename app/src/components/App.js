@@ -13,7 +13,7 @@ function App(props) {
         <div className='page-background'>
             <Header />
             <Routes>
-                <Route index element={<ProfilePage currentView={isExperience} />} ></Route>
+                <Route path='profile' element={<ProfilePage currentView={isExperience} />} ></Route>
             </Routes>
         </div>
     )
