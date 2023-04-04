@@ -14,6 +14,7 @@ function App(props) {
             <Header />
             <Routes>
                 <Route index element={<ProfilePage currentView={isExperience} />} ></Route>
+                
             </Routes>
         </div>
     )
