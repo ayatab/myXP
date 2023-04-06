@@ -280,10 +280,16 @@ hr {
 }
 
 .landing-logo {
-  width: 25%;
-  height: 25%;
-  padding-left: 5rem;
+  width: 200px;
+  height: 200px;
 
+}
+
+.landing-text {
+  font-family: 'all-round-gothic';
+  font-weight: 700;
+  font-size: 40px;
+  color: #FFFFFF;
 }
 
 .tourn-card {
