@@ -283,4 +283,48 @@ hr {
   width: 25%;
   height: 25%;
   padding-left: 5rem;
+
+}
+
+.tourn-card {
+  border-radius: 23.5px;
+  /* border: 1.5px solid #000000; */
+  border: none;
+}
+
+.tourn-place {
+  background-color: #FFE17D;
+  border-radius: 23.5px 0px 0px 23.5px;
+}
+
+.tourn-info {
+  margin: 20px;
+}
+
+.tourn-info div {
+  margin: 2px;
+}
+
+.tourn-info h3 {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 164.52%;
+  /* or 26px */
+
+  text-align: center;
+
+  color: #737373;
+}
+
+.tourn-info p {
+  font-family: 'all-round-gothic';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 164.52%;
+  /* or 39px */
+
+  text-align: center;
 }
