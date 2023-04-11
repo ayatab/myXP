@@ -1,0 +1,22 @@
+type SocialHandle {
+  twitter: String
+  email: String
+  discord: String
+}
+
+type UserInfo {
+  name: String
+  gamer_tag: String
+  email: String
+  pronouns: String
+  location: String
+  socials: SocialHandle
+}
+
+type PlayerModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  games: AWSJSON
+  experiences: AWSJSON
+  user_info: UserInfo
+  user_id: String
+}
