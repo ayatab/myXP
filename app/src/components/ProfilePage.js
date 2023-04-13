@@ -30,7 +30,7 @@ export default function ProfilePage(props) {
     }
 
     return (
-        <div className="container">
+        <div className="container-fluid">
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
@@ -235,7 +235,6 @@ function ExperienceCard(props) {
                         </div>
                     </div>
                 </div>
-
                 <div>
                     <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Tournament History</h1>
@@ -245,34 +244,33 @@ function ExperienceCard(props) {
                     {/* Experience */}
                     <div className="card mb-3 tourn-card">
                         <div className="row g-0">
-                            <div className="col-md-2 text-center tourn-place">
-                                {/* <img src="..." class="img-fluid rounded-start" alt="..."> */}
+                            <div className="col-md-2 text-center tourn-place d-flex">
                                 <h1>1st</h1>
                             </div>
-                            <div className="col-md-10">
-                                <div className="card-body tourn-info row">
+                            <div className="col-md-10 tourn-bg">
+                                <div className="card-body tourn-info d-flex justify-content-center">
                                     {/* <h5 className="card-title">Card title</h5>
                                     <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                     <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p> */}
-                                    <div className="col text-center">
-                                        <div className="row"><h3>Tournament</h3></div>
-                                        <div className="row"><p>Valorant Challengers 2023</p></div>
+                                    <div className="text-center">
+                                        <div><h3>Tournament</h3></div>
+                                        <div><p>Valorant Challengers 2023</p></div>
                                     </div>
-                                    <div className="col text-center">
-                                        <div className="row"><h3>Date</h3></div>
-                                        <div className="row"><p>11-03-2022</p></div>
+                                    <div className="text-center">
+                                        <div><h3>Date</h3></div>
+                                        <div><p>11-03-2022</p></div>
                                     </div>
-                                    <div className="col text-center">
-                                        <div className="row"><h3>Tier</h3></div>
-                                        <div className="row"><p>Tier-B</p></div>
+                                    <div className="text-center">
+                                        <div><h3>Tier</h3></div>
+                                        <div><p>Tier-B</p></div>
                                     </div>
-                                    <div className="col text-center">
-                                        <div className="row"><h3>Result</h3></div>
-                                        <div className="row"><p>0-3</p></div>
+                                    <div className="text-center">
+                                        <div><h3>Result</h3></div>
+                                        <div><p>0-3</p></div>
                                     </div>
-                                    <div className="col text-center">
-                                        <div className="row"><h3>Team</h3></div>
-                                        <div className="row"><img src='pics/sentinels.png' /></div>
+                                    <div className="text-center">
+                                        <div><h3>Team</h3></div>
+                                        <div><img src='pics/sentinels.png' /></div>
                                     </div>
                                 </div>
                             </div>
