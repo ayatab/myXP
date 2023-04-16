@@ -151,9 +151,25 @@ hr {
 .header-text {
   font-family: 'all-round-gothic';
   font-style: normal;
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 36px;
+  font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 36px;
+}
+
+.info-header {
+  font-family: 'all-round-gothic';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* SIDE CARD */
+.side-card {
+  padding: 45px 35px;
+  margin: 0px 32px;
+  border-radius: 2em;
 }
 
 /* INFO CARD */
@@ -167,7 +183,7 @@ hr {
 .info-list {
   list-style: none;
   margin-left: 0;
-  padding-left: 1em;
+  padding-left: 0em;
   /* text-indent: em; */
 }
 
@@ -238,6 +254,7 @@ hr {
   width: min-content;
   border: 1.5px solid #000000;
   border-radius: 23.5px;
+  margin-right: 3px;
 }
 
 .interest-block p {

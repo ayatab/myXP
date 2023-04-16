@@ -321,15 +321,15 @@ function InfoCard(props) {
     // })
 
     return (
-        <div className="card info-card border-0"   >
+        <div className="card side-card border-0"   >
             <div className="card-body">
-                <h1 className="card-title header-text">Personal Information</h1>
+                <h1 className="card-title info-header">Personal Information</h1>
                 <hr />
                 <ul className="info-list">
                     {/* {headMap} */}
                     <li className="info-item">
-                        <div className="d-flex flex-grow-1 align-self-center">
-                            <img className="info-icon" src="pics/profile/Pronouns.svg" />
+                        <div className="align-self-center">
+                            {/* <img className="info-icon" src="pics/profile/Pronouns.svg" /> */}
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Pronouns:</h2>
                                 <p className="info-text">he/him</p>
@@ -337,8 +337,8 @@ function InfoCard(props) {
                         </div>
                     </li>
                     <li className="info-item">
-                        <div className="d-flex flex-grow-1 align-self-center">
-                            <img className="info-icon" src="pics/profile/Based In.svg" />
+                        <div className="align-self-center">
+                            {/* <img className="info-icon" src="pics/profile/Based In.svg" /> */}
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Based In:</h2>
                                 <p className="info-text">Seattle, WA</p>
@@ -346,8 +346,8 @@ function InfoCard(props) {
                         </div>
                     </li>
                     <li className="info-item">
-                        <div className="d-flex flex-grow-1 align-self-center">
-                            <img className="info-icon" src="pics/profile/Email.svg" />
+                        <div className="align-self-center">
+                            {/* <img className="info-icon" src="pics/profile/Email.svg" /> */}
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Email:</h2>
                                 <p className="info-text">AlexanderJHeng@gmail.com</p>
@@ -355,8 +355,8 @@ function InfoCard(props) {
                         </div>
                     </li>
                     <li className="info-item">
-                        <div className="d-flex flex-grow-1 align-self-center">
-                            <img className="info-icon" src="pics/profile/Twitter.svg" />
+                        <div className="align-self-center">
+                            {/* <img className="info-icon" src="pics/profile/Twitter.svg" /> */}
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Twitter:</h2>
                                 <p className="info-text">@HorseEggs22</p>
@@ -371,13 +371,18 @@ function InfoCard(props) {
 
 function InterestCard(props) {
     return (
-        <div className="card info-card border-0"   >
+        <div className="card side-card border-0"   >
             <div className="card-body">
-                <h1 className="card-title header-text">Interests</h1>
+                <h1 className="card-title info-header">Interests</h1>
                 <hr />
             </div>
-            <div className='m-0 interest-block'>
-                <p className='m-1'>Hiking</p>
+            <div classname="d-flex">
+                <div className='interest-block'>
+                    <p className='m-1'>Hiking</p>
+                </div>
+                <div className='interest-block'>
+                    <p className='m-1'>Animation</p>
+                </div>
             </div>
         </div>
     )

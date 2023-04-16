@@ -6,13 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import {
-  Button,
-  Flex,
-  Grid,
-  TextAreaField,
-  TextField,
-} from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextAreaField } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { PlayerModel } from "../models";
 import { fetchByPath, validateField } from "./utils";
@@ -31,24 +25,24 @@ export default function PlayerModelCreateForm(props) {
   const initialValues = {
     games: "",
     experiences: "",
-    user_id: "",
+    user_info: "",
   };
   const [games, setGames] = React.useState(initialValues.games);
   const [experiences, setExperiences] = React.useState(
     initialValues.experiences
   );
-  const [user_id, setUser_id] = React.useState(initialValues.user_id);
+  const [user_info, setUser_info] = React.useState(initialValues.user_info);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setGames(initialValues.games);
     setExperiences(initialValues.experiences);
-    setUser_id(initialValues.user_id);
+    setUser_info(initialValues.user_info);
     setErrors({});
   };
   const validations = {
     games: [{ type: "JSON" }],
     experiences: [{ type: "JSON" }],
-    user_id: [],
+    user_info: [{ type: "JSON" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -78,7 +72,7 @@ export default function PlayerModelCreateForm(props) {
         let modelFields = {
           games,
           experiences,
-          user_id,
+          user_info,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -134,7 +128,7 @@ export default function PlayerModelCreateForm(props) {
             const modelFields = {
               games: value,
               experiences,
-              user_id,
+              user_info,
             };
             const result = onChange(modelFields);
             value = result?.games ?? value;
@@ -159,7 +153,7 @@ export default function PlayerModelCreateForm(props) {
             const modelFields = {
               games,
               experiences: value,
-              user_id,
+              user_info,
             };
             const result = onChange(modelFields);
             value = result?.experiences ?? value;
@@ -174,32 +168,31 @@ export default function PlayerModelCreateForm(props) {
         hasError={errors.experiences?.hasError}
         {...getOverrideProps(overrides, "experiences")}
       ></TextAreaField>
-      <TextField
-        label="User id"
+      <TextAreaField
+        label="User info"
         isRequired={false}
         isReadOnly={false}
-        value={user_id}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               games,
               experiences,
-              user_id: value,
+              user_info: value,
             };
             const result = onChange(modelFields);
-            value = result?.user_id ?? value;
+            value = result?.user_info ?? value;
           }
-          if (errors.user_id?.hasError) {
-            runValidationTasks("user_id", value);
+          if (errors.user_info?.hasError) {
+            runValidationTasks("user_info", value);
           }
-          setUser_id(value);
+          setUser_info(value);
         }}
-        onBlur={() => runValidationTasks("user_id", user_id)}
-        errorMessage={errors.user_id?.errorMessage}
-        hasError={errors.user_id?.hasError}
-        {...getOverrideProps(overrides, "user_id")}
-      ></TextField>
+        onBlur={() => runValidationTasks("user_info", user_info)}
+        errorMessage={errors.user_info?.errorMessage}
+        hasError={errors.user_info?.hasError}
+        {...getOverrideProps(overrides, "user_info")}
+      ></TextAreaField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

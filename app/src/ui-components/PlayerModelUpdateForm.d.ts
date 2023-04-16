@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, TextAreaFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { PlayerModel } from "../models";
 export declare type ValidationResponse = {
@@ -16,19 +16,19 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type PlayerModelUpdateFormInputValues = {
     games?: string;
     experiences?: string;
-    user_id?: string;
+    user_info?: string;
 };
 export declare type PlayerModelUpdateFormValidationValues = {
     games?: ValidationFunction<string>;
     experiences?: ValidationFunction<string>;
-    user_id?: ValidationFunction<string>;
+    user_info?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type PlayerModelUpdateFormOverridesProps = {
     PlayerModelUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     games?: PrimitiveOverrideProps<TextAreaFieldProps>;
     experiences?: PrimitiveOverrideProps<TextAreaFieldProps>;
-    user_id?: PrimitiveOverrideProps<TextFieldProps>;
+    user_info?: PrimitiveOverrideProps<TextAreaFieldProps>;
 } & EscapeHatchProps;
 export declare type PlayerModelUpdateFormProps = React.PropsWithChildren<{
     overrides?: PlayerModelUpdateFormOverridesProps | undefined | null;

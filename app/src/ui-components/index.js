@@ -5,5 +5,7 @@
  **************************************************************************/
 
 export { default as studioTheme } from "./studioTheme";
+export { default as TestModelCreateForm } from "./TestModelCreateForm";
+export { default as TestModelUpdateForm } from "./TestModelUpdateForm";
 export { default as PlayerModelCreateForm } from "./PlayerModelCreateForm";
 export { default as PlayerModelUpdateForm } from "./PlayerModelUpdateForm";
