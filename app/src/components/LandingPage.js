@@ -15,11 +15,10 @@ export default function LandingPage(props) {
 
     return (
         <div className='landing-bg'>
-            <div>
-
+            {/* <div>
                 <button onClick={() => Auth.federatedSignIn({ provider: "Google" })}>Sign in w google</button>
                 <button onClick={checkUser}>Check user</button>
-            </div>
+            </div> */}
             <div className='container'>
                 <div className='d-flex'>
                     <img src='pics/boys.png' className='landing-boys-pic img-fluid'></img>

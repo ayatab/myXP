@@ -74,12 +74,12 @@ function HeaderCard(props) {
     return (
         // <div className='card info-cards '>
         <div className="d-flex flex-column justify-content-center bg-white card border-light profile-card">
-            <img src='pics/profilebackground.png' className='position-relative profile-background' />
+            <img src='/pics/profilebackground.png' className='position-relative profile-background' />
             <div className='gamer-tag'>
                 <p className='m-0'>Horse_egg</p>
             </div>
             {/* <div className='card-body card-body-height'> */}
-            <img src='pics/alexpic.png' className='card-img mx-auto profile-img'></img>
+            <img src='/pics/alexpic.png' className='card-img mx-auto profile-img'></img>
             {/* </div> */}
             <div className='status'>Gaming 😎</div>
         </div>
@@ -224,7 +224,7 @@ function ExperienceCard(props) {
 
     const navigateTo = useNavigate();
     const handleClick = (event) => {
-        props.profileCallback(profileData);
+        props.profileCallback({ ...profileData, [event.target.name]: event.target.value });
         navigateTo('/profile');
     }
 
@@ -234,7 +234,7 @@ function ExperienceCard(props) {
                 <div>
                     <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Experience</h1>
-                        <span><button className="btn" onClick={handleClick}><img src="pics/edit.svg"></img></button></span>
+                        <span><button className="btn" onClick={handleClick}><img src="/pics/edit.svg"></img></button></span>
                         {/* <p>EDIT</p> */}
                     </div>
                     <hr />
@@ -295,7 +295,7 @@ function ExperienceCard(props) {
                                     </div>
                                     <div className="text-center d-flex flex-column">
                                         <div><h3>Team</h3></div>
-                                        <div><img src='pics/sentinels.png' /></div>
+                                        <div><img src='/pics/sentinels.png' /></div>
                                     </div>
                                 </div>
                             </div>
