@@ -23,7 +23,7 @@ export default function Home(props) {
     return (
         <div className='container mt-5 streaming-card'>
             <div className='row streaming-card'>
-                <div className='col card text-center py-3 h-auto streaming-card'>
+                <div className='col card text-center m-2 py-3 h-auto streaming-card'>
                     <p className=''>Now Streaming</p>
                     <div className='d-flex h-auto mt-3 justify-content-center'>
                         <img src='pics/helen.png' className='feed-img'></img>
@@ -75,7 +75,7 @@ export default function Home(props) {
                         ))}
                     </div>
                 </div>
-                <div className='col streaming-card card m-2 text-center h-auto p-3 m-2'>
+                <div className='col streaming-card card m-2 text-center h-auto p-3'>
 
                 </div>
             </div>
