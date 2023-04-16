@@ -23,7 +23,7 @@ export default function Home(props) {
     return (
         <div className='container mt-5 clear-continer'>
             <div className='row streaming-card'>
-                <div className='col card text-center m-2 py-3 streaming-card h-auto'>
+                <div className='col card text-center m-2 py-3 streaming-card'>
                     <p className='pt-3'>Now Streaming</p>
                     <div className='d-flex mt-3 justify-content-center'>
                         <img src='pics/helen.png' className='feed-img'></img>
@@ -39,7 +39,7 @@ export default function Home(props) {
                     </div>
                 </div>
                 <div className='col-8'>
-                    <div className='card h-auto p-3 m-2 streaming-card'>
+                    <div className='card p-3 m-2 streaming-card'>
                         <div className='d-flex h-auto mt-3 ps-4'>
                             <img src='pics/helen.png' className='feed-img'></img>
                             <p className='align-self-center fw-bold mb-0 ps-2'>You</p>
@@ -52,11 +52,15 @@ export default function Home(props) {
                         </div>
                     </div>
 
+                    
+                </div>
+                <div className='col streaming-card card m-2 text-center p-3'>
 
-                    <div className='my-3'>
+                </div>
+            </div>
+            <div className='my-3 row d-flex justify-content-center'>
                         {chat.map(message => (
-
-                            <div className='card my-3 chat-messages streaming-card'>
+                            <div className='card my-3 chat-messages streaming-card col-8'>
                                 <div className='d-flex h-auto'>
                                     <img src='pics/helen.png' className='feed-img'></img>
                                     <p className='align-self-center fw-bold mb-0 ps-2'>@person1</p>
@@ -67,19 +71,11 @@ export default function Home(props) {
                                     <FontAwesomeIcon icon="fa-solid fa-comment" className='pe-5'/>
                                     <FontAwesomeIcon icon="fa-solid fa-retweet" className='pe-5'/>
                                     <FontAwesomeIcon icon="fa-solid fa-share" className='pe-5' />
-                                    
                                 </div>
-
                             </div>
 
                         ))}
-                    </div>
-                </div>
-                <div className='col streaming-card card m-2 text-center p-3'>
-
-                </div>
             </div>
-
         </div>
     )
 }
