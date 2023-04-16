@@ -21,11 +21,11 @@ export default function Home(props) {
     };
 
     return (
-        <div className='container mt-5 streaming-card'>
+        <div className='container mt-5 clear-continer'>
             <div className='row streaming-card'>
-                <div className='col card text-center m-2 py-3 h-auto streaming-card'>
-                    <p className=''>Now Streaming</p>
-                    <div className='d-flex h-auto mt-3 justify-content-center'>
+                <div className='col card text-center m-2 py-3 streaming-card h-auto'>
+                    <p className='pt-3'>Now Streaming</p>
+                    <div className='d-flex mt-3 justify-content-center'>
                         <img src='pics/helen.png' className='feed-img'></img>
                         <p className='align-self-center fw-bold mb-0 ps-2'>@person1</p>
                     </div>
@@ -75,7 +75,7 @@ export default function Home(props) {
                         ))}
                     </div>
                 </div>
-                <div className='col streaming-card card m-2 text-center h-auto p-3'>
+                <div className='col streaming-card card m-2 text-center p-3'>
 
                 </div>
             </div>
