@@ -312,7 +312,7 @@ hr {
 }
 
 .landing-bottom-background {
-  background-color:#2B4540;
+  background-color: #2B4540;
   height: 400px;
 }
 
@@ -394,9 +394,16 @@ hr {
 }
 
 .streaming-card {
-  font-family: 'all-around-gothic';
+  font-family: 'all-round-gothic';
+  border-radius: 3rem;
 }
 
+.chat-messages {
+  /* padding-left: 3rem;
+  padding-right: 3rem; */
+  padding: 1rem 3rem 1rem 3rem;
+  font-family: 'all-round-gothic';
+}
 
 
 
@@ -436,5 +443,3 @@ hr {
   font-family: 'all-round-gothic';
   color: #000000;
 }
-
-
