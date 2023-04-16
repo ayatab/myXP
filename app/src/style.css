@@ -297,8 +297,8 @@ line-height: 36px;
 }
 
 .landing-logo {
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
 
 }
 
@@ -307,6 +307,34 @@ line-height: 36px;
   font-weight: 700;
   font-size: 40px;
   color: #FFFFFF;
+}
+
+.landing-padding {
+  padding: 5rem;
+}
+
+.landing-yellow-bg {
+  background-color: #B1C735;
+  height: 400px;
+  text-align: right;
+}
+
+.landing-yellow-text {
+  font-family: 'all-round-gothic';
+  font-weight: 700;
+  font-size: 60px;
+  color: #000000;
+  padding: 5rem;
+  text-align: center;
+}
+
+.landing-bottom-background {
+  background-color: #2B4540;
+  height: 400px;
+}
+
+.gamer-padding {
+  padding-top: 7rem;
 }
 
 .tourn-card {
@@ -382,6 +410,24 @@ line-height: 36px;
   gap: 10px;
 }
 
+.streaming-card {
+  font-family: 'all-round-gothic';
+  border-radius: 3rem;
+}
+
+.chat-messages {
+  /* padding-left: 3rem;
+  padding-right: 3rem; */
+  padding: 1rem 3rem 1rem 3rem;
+  font-family: 'all-round-gothic';
+}
+
+
+
+
+
+
+
 .tourn-info img {
   width: auto;
   margin: auto;
@@ -401,3 +447,16 @@ line-height: 36px;
 /* .test {
   margin: auto;
 } */
+
+/* ALL FOR FOOTER */
+
+.footer {
+  background-color: #ECECEC;
+}
+
+.footer-logo-text {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: 'all-round-gothic';
+  color: #000000;
+}
