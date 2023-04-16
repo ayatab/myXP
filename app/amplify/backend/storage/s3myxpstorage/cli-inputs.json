@@ -1,0 +1,13 @@
+{
+  "resourceName": "s3myxpstorage",
+  "bucketName": "myxp-storage",
+  "policyUUID": "59326394",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ]
+}
