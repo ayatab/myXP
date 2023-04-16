@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
+
 
 export default function ProfilePage(props) {
-
+    const [profileData, setProfileData] = useState(props.profile);
     const [isExperience, setIsExperience] = useState(props.currentView);
 
     const active = "btn profile-btn btn-dark"
     const inactive = "btn profile-btn"
+
+    // console.log(profileData.experience.role);
 
     let expStyle = active;
     let gameStyle = inactive;
@@ -37,7 +40,7 @@ export default function ProfilePage(props) {
             <div className='row'>
                 <div className='col-5 info-col'>
                 </div>
-                <div className='col main-col'>
+                <div className='col main-col d-flex justify-content-center'>
                     {/* <div className='d-flex my-3 justify-content-center'> */}
                     {isExperience &&
                         <div className='d-flex my-3 justify-content-center'>
@@ -57,12 +60,12 @@ export default function ProfilePage(props) {
 
             <div className='row'>
                 <div className='col-3 info-col'>
-                    <InfoCard />
+                    <InfoCard profile={profileData} />
                     <div className='p-4'></div>
                     <InterestCard />
                 </div>
                 <div className='col main-col'>
-                    {isExperience && <ExperienceCard />}
+                    {isExperience && <ExperienceCard profile={profileData} />}
                     {!isExperience && <GamesCard />}
                 </div>
             </div>
@@ -81,7 +84,7 @@ function HeaderCard(props) {
             {/* <div className='card-body card-body-height'> */}
             <img src='pics/alexpic.png' className='card-img mx-auto profile-img'></img>
             {/* </div> */}
-            <div className='status'>I like dumb stuff lol</div>
+            <div className='status'>Gaming 😎</div>
         </div>
         // </div>
     )
@@ -91,9 +94,7 @@ function GamesCard(props) {
     return (
         <div className='bg-white card info-card border-light profile-card'>
             <div className='card-body'>
-                <a className="btn btn-dark my-5 mx-5" href="#" role="button">some placeholder cool button before i set up the actual button thing lol</a>
-
-
+                {/* <a className="btn btn-dark my-5 mx-5" href="#" role="button">some placeholder cool button before i set up the actual button thing lol</a> */}
                 <div className='d-flex justify-content-between'>
                     <h4 className='experience-header'>SOLO</h4>
                     <p>4,154 Matches</p>
@@ -210,33 +211,39 @@ function GamesCard(props) {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     )
 }
 
 function ExperienceCard(props) {
+    const [profileData, setProfileData] = useState(props.profile);
+    const navigateTo = useNavigate();
+    const handleClick = (event) => {
+        navigateTo("/profile/edit");
+    }
+
     return (
         <div className='bg-white card info-card border-light profile-card'>
             <div className='card-body'>
                 <div>
                     <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Experience</h1>
+                        <span><button className="btn" onClick={handleClick}><img src="pics/edit.svg"></img></button></span>
                         {/* <p>EDIT</p> */}
                     </div>
                     <hr />
                     {/* Experience */}
                     <div className="d-flex row stat-cluster">
                         <div className="experience-box">
-                            <h5>Sentinels Valorant IGL</h5>
-                            <h6>Dec 2019 - Present</h6>
-                            <p></p>
+                            <h5 className="role">{profileData.experience.role}</h5>
+                            <h6 className="dates">{profileData.experience.start_date + " - " + profileData.experience.end_date}</h6>
+                            <p className="description">{profileData.experience.description}</p>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div className='d-flex justify-content-between'>
+                    <div className='d-flex'>
                         <h1 className='header-text'>Tournament History</h1>
                         {/* <p>EDIT</p> */}
                     </div>
@@ -244,14 +251,12 @@ function ExperienceCard(props) {
                     {/* Experience */}
                     <div className="card mb-3 tourn-card">
                         <div className="row g-0">
-                            <div className="col-md-2 text-center tourn-place d-flex">
-                                <h1>1st</h1>
+                            <div className="col-md-2 text-center tourn-place d-flex justify-content-center">
+                                <h1>1</h1>
+                                <h2>st</h2>
                             </div>
                             <div className="col-md-10 tourn-bg">
-                                <div className="card-body tourn-info d-flex justify-content-center">
-                                    {/* <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p> */}
+                                <div className="card-body tourn-info d-flex justify-content-evenly">
                                     <div className="text-center">
                                         <div><h3>Tournament</h3></div>
                                         <div><p>Valorant Challengers 2023</p></div>
@@ -268,16 +273,15 @@ function ExperienceCard(props) {
                                         <div><h3>Result</h3></div>
                                         <div><p>0-3</p></div>
                                     </div>
-                                    <div className="text-center">
+                                    <div className="text-center d-flex flex-column">
                                         <div><h3>Team</h3></div>
-                                        <div><img src='pics/sentinels.png' /></div>
+                                        <div><img src='pics/sentinels.png'/></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div>
                     <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Education</h1>
@@ -319,6 +323,7 @@ function InfoCard(props) {
     //     );
     //     return component;
     // })
+    const [profileData, setProfileData] = useState(props.profile);
 
     return (
         <div className="card side-card border-0"   >
@@ -332,7 +337,7 @@ function InfoCard(props) {
                             {/* <img className="info-icon" src="pics/profile/Pronouns.svg" /> */}
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Pronouns:</h2>
-                                <p className="info-text">he/him</p>
+                                <p className="info-text">{profileData.info.pronouns}</p>
                             </div>
                         </div>
                     </li>
@@ -341,7 +346,7 @@ function InfoCard(props) {
                             {/* <img className="info-icon" src="pics/profile/Based In.svg" /> */}
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Based In:</h2>
-                                <p className="info-text">Seattle, WA</p>
+                                <p className="info-text">{profileData.info.location}</p>
                             </div>
                         </div>
                     </li>
@@ -350,7 +355,7 @@ function InfoCard(props) {
                             {/* <img className="info-icon" src="pics/profile/Email.svg" /> */}
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Email:</h2>
-                                <p className="info-text">AlexanderJHeng@gmail.com</p>
+                                <p className="info-text">{profileData.info.email}</p>
                             </div>
                         </div>
                     </li>
@@ -359,7 +364,7 @@ function InfoCard(props) {
                             {/* <img className="info-icon" src="pics/profile/Twitter.svg" /> */}
                             <div className="d-flex flex-column">
                                 <h2 className="info-head">Twitter:</h2>
-                                <p className="info-text">@HorseEggs22</p>
+                                <a className="twitter-link" href={"https://twitter.com/" + profileData.info.twitter}><p className="info-text">{"@" + profileData.info.twitter}</p></a>
                             </div>
                         </div>
                     </li>
@@ -376,7 +381,7 @@ function InterestCard(props) {
                 <h1 className="card-title info-header">Interests</h1>
                 <hr />
             </div>
-            <div classname="d-flex">
+            <div className="d-flex">
                 <div className='interest-block'>
                     <p className='m-1'>Hiking</p>
                 </div>

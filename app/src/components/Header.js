@@ -14,6 +14,8 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 export default function Header(props) {
 
     const navList = ["Home", "Connection", "Game", "Notification", "Jobs", "Messaging", "Profile"];
+    // const navList = ["Home", "Profile"];
+    
 
     const navButtons = navList.map((navName) => {
         const component = (

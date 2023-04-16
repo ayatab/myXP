@@ -152,9 +152,9 @@ hr {
   font-family: 'all-round-gothic';
   font-style: normal;
   font-style: normal;
-font-weight: 600;
-font-size: 30px;
-line-height: 36px;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
 }
 
 .info-header {
@@ -168,15 +168,22 @@ line-height: 36px;
 /* SIDE CARD */
 .side-card {
   padding: 45px 35px;
-  margin: 0px 32px;
+  margin: 0px 16px;
   border-radius: 2em;
 }
 
-/* INFO CARD */
+.info-item a:link {
+  color: black;
+}
 
+.form-control {
+  margin-bottom: 5px;
+}
+
+/* INFO CARD */
 .info-card {
   padding: 40px 60px 40px 60px;
-  margin: 0px 32px;
+  margin: 0px 16px;
   border-radius: 2em;
 }
 
@@ -210,7 +217,7 @@ line-height: 36px;
 }
 
 .info-col {
-  /* padding-right: 0; */
+  padding-right: 0;
   /* width: 37.35%; */
   /* flex: 0 0 37.35%; */
   /* max-width: 37.35%; */
@@ -227,6 +234,35 @@ line-height: 36px;
 
 .card-body {
   padding: 0;
+}
+
+/* EXPERIENCE */
+
+.experience-box {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.experience-box .role {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.experience-box .dates {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #828282;
+}
+
+.experience-box .description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 164.52%;
 }
 
 /* need sep style for active/inactive button */
@@ -349,7 +385,18 @@ line-height: 36px;
 }
 
 .tourn-place h1 {
-  margin: auto;
+  margin: auto 0px auto auto;
+  font-family: 'all-round-gothic';
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 125%;
+}
+
+.tourn-place h2 {
+  margin: auto auto auto 0px;
+  font-family: 'all-round-gothic';
+  font-size: 20px;
+  line-height: 125%;
 }
 
 .tourn-bg {
@@ -365,6 +412,7 @@ line-height: 36px;
 
 .tourn-info div {
   margin: 2px;
+  max-width: 260px;
 }
 
 .tourn-info h3 {
@@ -422,19 +470,14 @@ line-height: 36px;
   font-family: 'all-round-gothic';
 }
 
-
-
-
-
-
-
 .tourn-info img {
   width: auto;
   margin: auto;
 }
 
-.tourn-info div div {
-  padding: 5px;
+.tourn-info div h3 {
+  padding-top: 5px;
+  margin-bottom: 0px;
 }
 
 .tourn-info p {
