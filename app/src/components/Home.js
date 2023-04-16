@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Home(props) {
+
+    const [message, setMessage] = useState('');
+    const [chat, setChat] = useState([]);
+
+    const handleMessageChange = (event) => {
+        setMessage(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setChat([...chat, message]);
+        setMessage('');
+    };
 
     return (
         <div className='container mt-5'>
@@ -30,14 +43,23 @@ export default function Home(props) {
                         <p className='align-self-center fw-bold mb-0 ps-2'>You</p>
                     </div>
                     <div class="py-3 d-flex text-center">
-                        <input type="email" className="form-control feed-text-box" id="exampleInputEmail1" aria-describedby="emailHelp" ></input>
-                        <button type="button" className="ms-3 feed-submit-button mt-auto">Success</button>
+                        <form onSubmit={handleSubmit}>
+                            <input type='text' value={message} className="form-control feed-text-box" onChange={handleMessageChange} ></input>
+                            <button type="submit" className="ms-3 feed-submit-button mt-auto" onClick={handleSubmit}>Success</button>
+                        </form>
                     </div>
-                    
+
                 </div>
                 <div className='col streaming-card card m-2 text-center'>
-                    <p></p>
+
                 </div>
+            </div>
+            <div>
+                {chat.map(message => (
+                    <div className='card'>
+                        <p>{message}</p>
+                    </div>
+                ))}
             </div>
         </div>
     )
