@@ -393,6 +393,17 @@ hr {
   gap: 10px;
 }
 
+.streaming-card {
+  font-family: 'all-around-gothic';
+}
+
+
+
+
+
+
+
+
 .tourn-info img {
   width: auto;
   margin: auto;
@@ -425,3 +436,5 @@ hr {
   font-family: 'all-round-gothic';
   color: #000000;
 }
+
+
