@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import EditModal from './EditModal.js';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 
 export default function ProfilePage(props) {
     const [profileData, setProfileData] = useState(props.profile);
     const [isExperience, setIsExperience] = useState(props.currentView);
+    const [show, setShow] = useState(false);
+
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
     const active = "btn profile-btn btn-dark"
     const inactive = "btn profile-btn"
 
-    // console.log(profileData.experience.role);
-
     let expStyle = active;
     let gameStyle = inactive;
+
 
     const changeExperience = (event) => {
         console.log("exp");
@@ -37,6 +43,7 @@ export default function ProfilePage(props) {
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
+            <EditModal show={show} handleClose={handleClose}/>
             <div className='row'>
                 <div className='col-5 info-col'>
                 </div>
@@ -65,7 +72,7 @@ export default function ProfilePage(props) {
                     <InterestCard />
                 </div>
                 <div className='col main-col'>
-                    {isExperience && <ExperienceCard profile={profileData} />}
+                    {isExperience && <ExperienceCard profile={profileData} show={show} handleShow={handleShow}/>}
                     {!isExperience && <GamesCard />}
                 </div>
             </div>
@@ -218,10 +225,12 @@ function GamesCard(props) {
 
 function ExperienceCard(props) {
     const [profileData, setProfileData] = useState(props.profile);
-    const navigateTo = useNavigate();
-    const handleClick = (event) => {
-        navigateTo("/profile/edit");
-    }
+    const handleShow = props.handleShow;
+
+    // const navigateTo = useNavigate();
+    // const handleClick = (event) => {
+    //     navigateTo("/profile/edit");
+    // }
 
     return (
         <div className='bg-white card info-card border-light profile-card'>
@@ -229,7 +238,7 @@ function ExperienceCard(props) {
                 <div>
                     <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Experience</h1>
-                        <span><button className="btn" onClick={handleClick}><img src="pics/edit.svg"></img></button></span>
+                        <span><button className="btn" onClick={handleShow}><img src="pics/edit.svg"></img></button></span>
                         {/* <p>EDIT</p> */}
                     </div>
                     <hr />
@@ -275,7 +284,7 @@ function ExperienceCard(props) {
                                     </div>
                                     <div className="text-center d-flex flex-column">
                                         <div><h3>Team</h3></div>
-                                        <div><img src='pics/sentinels.png'/></div>
+                                        <div><img src='pics/sentinels.png' /></div>
                                     </div>
                                 </div>
                             </div>
@@ -392,3 +401,47 @@ function InterestCard(props) {
         </div>
     )
 }
+
+// function EditWindow(props) {
+//     const [show, setShow] = useState(false);
+
+//     const handleClose = () => setShow(false);
+//     const handleShow = () => setShow(true);
+
+//     return (
+//         <div>
+//             <Modal show={show} onHide={handleClose}>
+//                 <Modal.Header closeButton>
+//                     <Modal.Title>Modal heading</Modal.Title>
+//                 </Modal.Header>
+//                 <Modal.Body>
+//                     <Form>
+//                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+//                             <Form.Label>Email address</Form.Label>
+//                             <Form.Control
+//                                 type="email"
+//                                 placeholder="name@example.com"
+//                                 autoFocus
+//                             />
+//                         </Form.Group>
+//                         <Form.Group
+//                             className="mb-3"
+//                             controlId="exampleForm.ControlTextarea1"
+//                         >
+//                             <Form.Label>Example textarea</Form.Label>
+//                             <Form.Control as="textarea" rows={3} />
+//                         </Form.Group>
+//                     </Form>
+//                 </Modal.Body>
+//                 <Modal.Footer>
+//                     <Button variant="secondary" onClick={handleClose}>
+//                         Close
+//                     </Button>
+//                     <Button variant="primary" onClick={handleClose}>
+//                         Save Changes
+//                     </Button>
+//                 </Modal.Footer>
+//             </Modal>
+//         </div>
+//     );
+// }

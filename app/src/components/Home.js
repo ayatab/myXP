@@ -44,7 +44,7 @@ export default function Home(props) {
                             <img src='pics/helen.png' className='feed-img'></img>
                             <p className='align-self-center fw-bold mb-0 ps-2'>You</p>
                         </div>
-                        <div class="py-3 d-flex">
+                        <div className="py-3 d-flex">
                             <form className='d-flex w-100 justify-content-center' onSubmit={handleSubmit}>
                                 <input type='text' value={message} className="form-control feed-text-box" onChange={handleMessageChange} ></input>
                                 <button type="submit" className="ms-3 feed-submit-button mt-auto" onClick={handleSubmit}>submit</button>
