@@ -10,8 +10,6 @@ import LandingPage from './LandingPage.js';
 
 function App(props) {
 
-    
-
     return (
         <div className='page-background'>
             <Header />
