@@ -5,9 +5,24 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
+const DEFAULT_USER = {
+    info: {
+        pronouns:'he/him',
+        location:'Seattle, WA',
+        email:'AlexanderJHeng@gmail.com',
+        twitter:'HorseEggs22'
+    },
+    experience: {
+        role:'Sentinels Valorant IGL',
+        start_date:'Dec. 2019',
+        end_date:'Present',
+        description:'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
+    }
+};
+
 export default function ProfilePage(props) {
-    const [profileData, setProfileData] = useState(props.profile);
-    const [isExperience, setIsExperience] = useState(props.currentView);
+    const [profileData, setProfileData] = useState(DEFAULT_USER);
+    const [isExperience, setIsExperience] = useState(true);
     const [show, setShow] = useState(false);
 
     const handleShow = () => setShow(true);
@@ -19,6 +34,9 @@ export default function ProfilePage(props) {
     let expStyle = active;
     let gameStyle = inactive;
 
+    const changeProfileData = (profileObj) => {
+        setProfileData(profileObj);
+    }
 
     const changeExperience = (event) => {
         console.log("exp");
@@ -38,12 +56,18 @@ export default function ProfilePage(props) {
         setIsExperience(false);
     }
 
+    async function logout() {
+        const logout = await Auth.signOut();
+        console.log(logout);
+    }
+
     return (
         <div className="container-fluid">
+            <Button onClick={logout} />
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
-            <EditModal show={show} handleClose={handleClose}/>
+            <EditModal show={show} handleClose={handleClose} changeProfileData={changeProfileData} profileData={profileData}/>
             <div className='row'>
                 <div className='col-5 info-col'>
                 </div>
@@ -226,11 +250,6 @@ function GamesCard(props) {
 function ExperienceCard(props) {
     const [profileData, setProfileData] = useState(props.profile);
     const handleShow = props.handleShow;
-
-    // const navigateTo = useNavigate();
-    // const handleClick = (event) => {
-    //     navigateTo("/profile/edit");
-    // }
 
     return (
         <div className='bg-white card info-card border-light profile-card'>

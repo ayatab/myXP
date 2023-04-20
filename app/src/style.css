@@ -223,11 +223,6 @@ hr {
   /* max-width: 37.35%; */
 }
 
-.main-col {
-  /* padding-left: 0; */
-  /* margin-left: 0; */
-}
-
 .info-item {
   margin-bottom: 20px;
 }
@@ -470,11 +465,7 @@ hr {
   font-family: 'all-round-gothic';
 }
 
-
-
-
-
-
+/* TOURN INFO */
 
 .tourn-info img {
   width: auto;
@@ -493,10 +484,6 @@ hr {
   line-height: 164.52%;
 }
 
-/* .test {
-  margin: auto;
-} */
-
 /* ALL FOR FOOTER */
 
 .footer {
@@ -509,3 +496,17 @@ hr {
   font-family: 'all-round-gothic';
   color: #000000;
 }
+
+.form-select {
+  border-radius: 40px;
+  height: 42px;
+  width: 100%;
+}
+
+.form-control {
+  width: 100%;
+}
+
+/* .required-text {
+  padd
+} */

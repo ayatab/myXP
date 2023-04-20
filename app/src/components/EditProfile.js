@@ -92,8 +92,6 @@ function GamesCard(props) {
         <div className='bg-white card info-card border-light profile-card'>
             <div className='card-body'>
                 {/* <a className="btn btn-dark my-5 mx-5" href="#" role="button">some placeholder cool button before i set up the actual button thing lol</a> */}
-
-
                 <div className='d-flex justify-content-between'>
                     <h4 className='experience-header'>SOLO</h4>
                     <p>4,154 Matches</p>
