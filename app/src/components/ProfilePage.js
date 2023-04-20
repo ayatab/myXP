@@ -1,13 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import EditModal from './EditModal.js';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
+
+const default_data = {
+    "solo": {
+        "wins": 0,
+        "matches": 0,
+        "kills": 0,
+        "win_rate": 0,
+        "kd": 0,
+        "top_10": 0,
+        "top_25": 0
+    },
+    "duo": {
+        "wins": 0,
+        "matches": 0,
+        "kills": 0,
+        "win_rate": 0,
+        "kd": 0,
+        "top_5": 0,
+        "top_12": 0
+    }
+}
 export default function ProfilePage(props) {
     const [profileData, setProfileData] = useState(props.profile);
     const [isExperience, setIsExperience] = useState(props.currentView);
+    const [gameData, setGameData] = useState(default_data);
     const [show, setShow] = useState(false);
 
     const handleShow = () => setShow(true);
@@ -37,13 +59,52 @@ export default function ProfilePage(props) {
         console.log("game: " + gameStyle);
         setIsExperience(false);
     }
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "2c338f0a-4054-44d1-a241-a1f82f6f5376");
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    useEffect(() => {
+        fetch("https://fortnite-api.com/v2/stats/br/v2?name=Prospеring", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result.data.stats.all)
+                const data = result.data.stats.all;
+                const datajson = {
+                    "solo": {
+                        "wins": data.solo.wins,
+                        "matches": data.solo.matches,
+                        "kills": data.solo.kills,
+                        "win_rate": data.solo.winRate,
+                        "kd": data.solo.kd,
+                        "top_10": data.solo.top10,
+                        "top_25": data.solo.top25
+                    },
+                    "duo": {
+                        "wins": data.duo.wins,
+                        "matches": data.duo.matches,
+                        "kills": data.duo.kills,
+                        "win_rate": data.duo.winRate,
+                        "kd": data.duo.kd,
+                        "top_5": data.duo.top5,
+                        "top_12": data.duo.top12
+                    }
+                }
+                setGameData(datajson);
+            })
+            .catch(error => console.log('error', error));
+    })
 
     return (
         <div className="container-fluid">
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
-            <EditModal show={show} handleClose={handleClose}/>
+            <EditModal show={show} handleClose={handleClose} />
             <div className='row'>
                 <div className='col-5 info-col'>
                 </div>
@@ -72,8 +133,8 @@ export default function ProfilePage(props) {
                     <InterestCard />
                 </div>
                 <div className='col main-col'>
-                    {isExperience && <ExperienceCard profile={profileData} show={show} handleShow={handleShow}/>}
-                    {!isExperience && <GamesCard />}
+                    {isExperience && <ExperienceCard profile={profileData} show={show} handleShow={handleShow} />}
+                    {!isExperience && <GamesCard gameData={gameData} />}
                 </div>
             </div>
         </div>
@@ -98,13 +159,14 @@ function HeaderCard(props) {
 }
 
 function GamesCard(props) {
+    const gameData = props.gameData;
     return (
         <div className='bg-white card info-card border-light profile-card'>
             <div className='card-body'>
                 {/* <a className="btn btn-dark my-5 mx-5" href="#" role="button">some placeholder cool button before i set up the actual button thing lol</a> */}
                 <div className='d-flex justify-content-between'>
                     <h4 className='experience-header'>SOLO</h4>
-                    <p>4,154 Matches</p>
+                    <p>{gameData.solo.matches} Matches</p>
                 </div>
                 <hr />
                 {/* this is all solo stats */}
@@ -112,8 +174,7 @@ function GamesCard(props) {
                     <div className="col-3 card mx-2 border-light stat-card">
                         <div className="card-body">
                             <h5 className="card-title">WINS</h5>
-                            <p className="card-text stat-number">3,700</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <p className="card-text stat-number">{gameData.solo.wins} </p>
 
                         </div>
                     </div>
@@ -121,40 +182,35 @@ function GamesCard(props) {
 
                         <div className="card-body">
                             <h5 className="card-title">Win%</h5>
-                            <p className="card-text stat-number">89.1%</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <p className="card-text stat-number">{gameData.solo.win_rate}%</p>
                         </div>
                     </div>
                     <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <p className="card-text stat-number">{gameData.solo.kills}</p>
                         </div>
                     </div>
                     <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <h5 className="card-title">KD</h5>
+                            <p className="card-text stat-number">{gameData.solo.kd}</p>
                         </div>
                     </div>
                     <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <h5 className="card-title">Top 10</h5>
+                            <p className="card-text stat-number">{gameData.solo.top_10}</p>
                         </div>
                     </div>
                     <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <h5 className="card-title">Top 25</h5>
+                            <p className="card-text stat-number">{gameData.solo.top_25}</p>
                         </div>
                     </div>
                 </div>
@@ -164,16 +220,15 @@ function GamesCard(props) {
 
                 <div className='d-flex mt-5 mb-0 justify-content-between'>
                     <h4 className='experience-header'>DUO</h4>
-                    <p>4,154 Matches</p>
+                    <p>{gameData.duo.matches} Matches</p>
                 </div>
                 <hr />
-                {/* this is all solo stats */}
+                {/* this is all duo stats */}
                 <div className="d-flex row stat-cluster text-center mx-2">
                     <div className="col-3 card mx-2 border-light stat-card">
                         <div className="card-body">
                             <h5 className="card-title">WINS</h5>
-                            <p className="card-text stat-number">3,700</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <p className="card-text stat-number">{gameData.duo.wins}</p>
 
                         </div>
                     </div>
@@ -181,40 +236,35 @@ function GamesCard(props) {
 
                         <div className="card-body">
                             <h5 className="card-title">Win%</h5>
-                            <p className="card-text stat-number">89.1%</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <p className="card-text stat-number">{gameData.duo.win_rate}%</p>
                         </div>
                     </div>
                     <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
                             <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <p className="card-text stat-number">{gameData.duo.kills}</p>
                         </div>
                     </div>
                     <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <h5 className="card-title">KD</h5>
+                            <p className="card-text stat-number">{gameData.duo.kd}</p>
                         </div>
                     </div>
                     <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <h5 className="card-title">Top 5</h5>
+                            <p className="card-text stat-number">{gameData.duo.top_5}</p>
                         </div>
                     </div>
                     <div className="col-3 card mx-2 border-light stat-card">
 
                         <div className="card-body">
-                            <h5 className="card-title">Kills</h5>
-                            <p className="card-text stat-number">47,334</p>
-                            <p className="card-text ">#11,626 - Top 0.1%</p>
+                            <h5 className="card-title">Top 12</h5>
+                            <p className="card-text stat-number">{gameData.duo.top_12}</p>
                         </div>
                     </div>
                 </div>
