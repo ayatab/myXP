@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import EditModal from './EditModal.js';
 import Button from 'react-bootstrap/Button';
-import { Amplify, Auth, graphqlOperation } from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 
 const DEFAULT_USER = {
     info: {
-        pronouns:'he/him',
-        location:'Seattle, WA',
-        email:'AlexanderJHeng@gmail.com',
-        twitter:'HorseEggs22'
+        pronouns: 'he/him',
+        location: 'Seattle, WA',
+        email: 'AlexanderJHeng@gmail.com',
+        twitter: 'HorseEggs22'
     },
     experience: {
-        role:'Sentinels Valorant IGL',
-        start_date:'Dec. 2019',
-        end_date:'Present',
-        description:'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
+        role: 'Sentinels Valorant IGL',
+        start_date: 'Dec. 2019',
+        end_date: 'Present',
+        description: 'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
     }
 };
 
@@ -87,9 +87,10 @@ export default function ProfilePage(props) {
     };
 
     async function logout() {
-        const logout = await Auth.signOut();
-        console.log(logout);
+        const user = await Auth.signOut()
+        console.log(user)
     }
+
 
     useEffect(() => {
         fetch("https://fortnite-api.com/v2/stats/br/v2?name=Prospеring", requestOptions)
@@ -120,15 +121,16 @@ export default function ProfilePage(props) {
                 setGameData(datajson);
             })
             .catch(error => console.log('error', error));
-    })
+    }, [])
 
     return (
         <div className="container-fluid">
-            <Button onClick={logout}>LOGOUT</Button>
+            <Button onClick={() => Auth.federatedSignIn({ provider: "Google" })}>Sign in with Google</Button>
+            <button onClick={logout}>Sign out</button>
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
-            <EditModal show={show} handleClose={handleClose} changeProfileData={changeProfileData} profileData={profileData}/>
+            <EditModal show={show} handleClose={handleClose} changeProfileData={changeProfileData} profileData={profileData} />
             <div className='row'>
                 <div className='col-5 info-col'>
                 </div>
