@@ -312,18 +312,15 @@ hr {
   font-size: 100px;
   padding-right: 5rem; */
 
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  text-align: right;
+  
 
   position: absolute;
+  bottom: 0;
+  right: 3rem;
   font-family: 'all-round-gothic';
   font-weight: 700;
-  font-size: 85px;
-  line-height: 100px;
-  padding-right: 11rem;
-  padding-bottom: 5rem;
+  font-size: 6vw;
+  line-height: 12vh;
   color: #FFFFFF;
 }
 
@@ -455,13 +452,17 @@ hr {
 
 .streaming-card {
   font-family: 'all-round-gothic';
-  border-radius: 3rem;
+  border-radius: 2.5rem;
 }
 
 .chat-messages {
   /* padding-left: 3rem;
   padding-right: 3rem; */
   padding: 1rem 3rem 1rem 3rem;
+  font-family: 'all-round-gothic';
+}
+
+.feed-font {
   font-family: 'all-round-gothic';
 }
 
@@ -510,3 +511,8 @@ hr {
 /* .required-text {
   padd
 } */
+
+.feed-link {
+  text-decoration: none;
+  color: #019D81;
+}

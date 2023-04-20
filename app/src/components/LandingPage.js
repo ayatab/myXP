@@ -20,9 +20,9 @@ export default function LandingPage(props) {
                 <button onClick={checkUser}>Check user</button>
             </div> */}
             <div className='container'>
-                <div className='d-flex'>
+                <div className='position-relative'>
                     <img src='pics/boys.png' className='landing-boys-pic img-fluid'></img>
-                    <div className='welcome-text justify-content-end'>Welcome <br></br> to MyXP</div>
+                    <p className='welcome-text'>Welcome <br></br> to MyXP</p>
 
                 </div>
                 <div className='text-end pe-5 pt-4 fs-4 text-light'>A centralized esports hub which allows gamers to showcase <br></br> their experience and make professional connections.</div>
