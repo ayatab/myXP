@@ -2,12 +2,48 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import EditModal from './EditModal.js';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
+import { Amplify, Auth, graphqlOperation } from 'aws-amplify';
+
+const DEFAULT_USER = {
+    info: {
+        pronouns:'he/him',
+        location:'Seattle, WA',
+        email:'AlexanderJHeng@gmail.com',
+        twitter:'HorseEggs22'
+    },
+    experience: {
+        role:'Sentinels Valorant IGL',
+        start_date:'Dec. 2019',
+        end_date:'Present',
+        description:'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
+    }
+};
+
+const default_data = {
+    "solo": {
+        "wins": 0,
+        "matches": 0,
+        "kills": 0,
+        "win_rate": 0,
+        "kd": 0,
+        "top_10": 0,
+        "top_25": 0
+    },
+    "duo": {
+        "wins": 0,
+        "matches": 0,
+        "kills": 0,
+        "win_rate": 0,
+        "kd": 0,
+        "top_5": 0,
+        "top_12": 0
+    }
+}
 
 export default function ProfilePage(props) {
     const [profileData, setProfileData] = useState(DEFAULT_USER);
     const [isExperience, setIsExperience] = useState(true);
+    const [gameData, setGameData] = useState(default_data);
     const [show, setShow] = useState(false);
 
     const handleShow = () => setShow(true);
@@ -40,6 +76,7 @@ export default function ProfilePage(props) {
         console.log("game: " + gameStyle);
         setIsExperience(false);
     }
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "2c338f0a-4054-44d1-a241-a1f82f6f5376");
 
@@ -48,6 +85,11 @@ export default function ProfilePage(props) {
         headers: myHeaders,
         redirect: 'follow'
     };
+
+    async function logout() {
+        const logout = await Auth.signOut();
+        console.log(logout);
+    }
 
     useEffect(() => {
         fetch("https://fortnite-api.com/v2/stats/br/v2?name=Prospеring", requestOptions)
@@ -82,7 +124,7 @@ export default function ProfilePage(props) {
 
     return (
         <div className="container-fluid">
-            <Button onClick={logout} />
+            <Button onClick={logout}>LOGOUT</Button>
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
@@ -428,47 +470,3 @@ function InterestCard(props) {
         </div>
     )
 }
-
-// function EditWindow(props) {
-//     const [show, setShow] = useState(false);
-
-//     const handleClose = () => setShow(false);
-//     const handleShow = () => setShow(true);
-
-//     return (
-//         <div>
-//             <Modal show={show} onHide={handleClose}>
-//                 <Modal.Header closeButton>
-//                     <Modal.Title>Modal heading</Modal.Title>
-//                 </Modal.Header>
-//                 <Modal.Body>
-//                     <Form>
-//                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-//                             <Form.Label>Email address</Form.Label>
-//                             <Form.Control
-//                                 type="email"
-//                                 placeholder="name@example.com"
-//                                 autoFocus
-//                             />
-//                         </Form.Group>
-//                         <Form.Group
-//                             className="mb-3"
-//                             controlId="exampleForm.ControlTextarea1"
-//                         >
-//                             <Form.Label>Example textarea</Form.Label>
-//                             <Form.Control as="textarea" rows={3} />
-//                         </Form.Group>
-//                     </Form>
-//                 </Modal.Body>
-//                 <Modal.Footer>
-//                     <Button variant="secondary" onClick={handleClose}>
-//                         Close
-//                     </Button>
-//                     <Button variant="primary" onClick={handleClose}>
-//                         Save Changes
-//                     </Button>
-//                 </Modal.Footer>
-//             </Modal>
-//         </div>
-//     );
-// }
