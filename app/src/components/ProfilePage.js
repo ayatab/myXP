@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import EditModal from './EditModal.js';
+import EditProfileModal from './EditProfileModal.js';
+import EditInfoModal from './EditInfoModal.js';
 import Button from 'react-bootstrap/Button';
 import { Amplify, Auth } from 'aws-amplify';
 
@@ -13,8 +14,10 @@ const DEFAULT_USER = {
     },
     experience: {
         role: 'Sentinels Valorant IGL',
-        start_date: 'Dec. 2019',
-        end_date: 'Present',
+        start_month: 'Dec. 2019',
+        start_year: '',
+        end_month: 'Present',
+        end_year: '',
         description: 'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
     }
 };
@@ -45,19 +48,38 @@ export default function ProfilePage(props) {
     const [isExperience, setIsExperience] = useState(true);
     const [gameData, setGameData] = useState(default_data);
     const [show, setShow] = useState(false);
+    // const [showEditExp, setShowEditExp] = useState(false);
+    // const [showInfoExp, setShowInfoExp] = useState(false);
+    
+    // const handleExpShow = () => setShowEditExperience(true);
+    // const handleExpClose = (profileObj) => {
+    //     setShowEditExperience(false);
+    // };
+    // const handleShow = () => setShowEditInfo(true);
+    // const handleClose = (profileObj) => {
+    //     setShowEditInfo(false);
+    // };
+
+    // const changeProfile = (profileObj) => {
+    //     setProfileData(profileObj);
+    // };
 
     const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
+    const handleClose = (profileObj) => {
+        //ppush data to aws 
+        // profileData.
+        setShow(false);
+    };
+
+    const changeProfile = (profileObj) => {
+        setProfileData(profileObj);
+    };
 
     const active = "btn profile-btn btn-dark"
     const inactive = "btn profile-btn"
 
     let expStyle = active;
     let gameStyle = inactive;
-
-    const changeProfileData = (profileObj) => {
-        setProfileData(profileObj);
-    }
 
     const changeExperience = (event) => {
         console.log("exp");
@@ -130,7 +152,8 @@ export default function ProfilePage(props) {
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
-            <EditModal show={show} handleClose={handleClose} changeProfileData={changeProfileData} profileData={profileData} />
+            <EditProfileModal show={show} handleClose={handleClose} profileData={profileData} changeProfile={changeProfile} />
+            {/* <EditInfoModal show={show} handleClose={handleClose} profileData={profileData} changeProfile={changeProfile} /> */}
             <div className='row'>
                 <div className='col-5 info-col'>
                 </div>
@@ -154,7 +177,7 @@ export default function ProfilePage(props) {
 
             <div className='row'>
                 <div className='col-3 info-col'>
-                    <InfoCard profile={profileData} />
+                    <InfoCard profile={profileData} show={show} handleShow={handleShow} />
                     <div className='p-4'></div>
                     <InterestCard />
                 </div>
@@ -300,7 +323,7 @@ function GamesCard(props) {
 }
 
 function ExperienceCard(props) {
-    const [profileData, setProfileData] = useState(props.profile);
+    const profileData = props.profile;
     const handleShow = props.handleShow;
 
     return (
@@ -317,7 +340,7 @@ function ExperienceCard(props) {
                     <div className="d-flex row stat-cluster">
                         <div className="experience-box">
                             <h5 className="role">{profileData.experience.role}</h5>
-                            <h6 className="dates">{profileData.experience.start_date + " - " + profileData.experience.end_date}</h6>
+                            <h6 className="dates">{profileData.experience.start_month + " " + profileData.experience.start_year + " - " + profileData.experience.end_month + " " + profileData.experience.end_year}</h6>
                             <p className="description">{profileData.experience.description}</p>
                         </div>
                     </div>
@@ -403,12 +426,16 @@ function InfoCard(props) {
     //     );
     //     return component;
     // })
-    const [profileData, setProfileData] = useState(props.profile);
+    const profileData = props.profile;
+    const handleShow = props.handleShow;
 
     return (
         <div className="card side-card border-0"   >
             <div className="card-body">
-                <h1 className="card-title info-header">Personal Information</h1>
+                <div className='d-flex justify-content-between'>
+                    <h1 className="card-title info-header">Personal Information</h1>
+                    <span><button className="btn" onClick={handleShow}><img src="pics/edit.svg"></img></button></span>
+                </div>
                 <hr />
                 <ul className="info-list">
                     {/* {headMap} */}
