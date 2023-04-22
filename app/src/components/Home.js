@@ -21,21 +21,21 @@ export default function Home(props) {
     };
 
     return (
-        <div className='container mt-5 clear-continer'>
+        <div className='container mt-5'>
             <div className='row streaming-card'>
                 <div className='col card text-center m-2 py-3 streaming-card'>
                     <p className='pt-3 fw-bold fs-5 feed-font'>Now Streaming</p>
                     <div className='d-flex mt-3 justify-content-center'>
                         <img src='pics/esther.png' className='feed-img'></img>
-                        <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@person1</p>
+                        <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@User#1</p>
                     </div>
                     <div className='d-flex h-auto mt-3 justify-content-center'>
                         <img src='pics/justin.png' className='feed-img'></img>
-                        <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@person1</p>
+                        <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@User#2</p>
                     </div>
                     <div className='d-flex h-auto mt-3 justify-content-center'>
                         <img src='pics/ayata.png' className='feed-img'></img>
-                        <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@person1</p>
+                        <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@User#3</p>
                     </div>
                 </div>
                 <div className='col-8'>
