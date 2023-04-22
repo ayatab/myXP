@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 
-export default function EditProfileModal(props) {
+export default function EditExpModal(props) {
     const show = props.show;
     const handleClose = props.handleClose;
     const profileData = props.profileData;

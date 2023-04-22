@@ -227,6 +227,10 @@ hr {
   margin-bottom: 20px;
 }
 
+.twitter-link:visited {
+  color: black;
+}
+
 .card-body {
   padding: 0;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import EditProfileModal from './EditProfileModal.js';
+import EditExpModal from './EditExpModal.js';
 import EditInfoModal from './EditInfoModal.js';
 import Button from 'react-bootstrap/Button';
 import { Amplify, Auth } from 'aws-amplify';
@@ -145,7 +145,7 @@ export default function ProfilePage(props) {
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
-            <EditProfileModal show={showExp} handleClose={handleCloseExp} profileData={profileData} changeProfile={changeProfile} />
+            <EditExpModal show={showExp} handleClose={handleCloseExp} profileData={profileData} changeProfile={changeProfile} />
             <EditInfoModal show={showInfo} handleClose={handleCloseInfo} profileData={profileData} changeProfile={changeProfile} />
             <div className='row'>
                 <div className='col-3 info-col'>
