@@ -12,14 +12,27 @@ const DEFAULT_USER = {
         email: 'AlexanderJHeng@gmail.com',
         twitter: 'HorseEggs22'
     },
-    experience: {
+    experience: [{
+        id: 0,
         role: 'Sentinels Valorant IGL',
         start_month: 'Dec.',
-        start_year: '2019',
+        start_year: '2021',
         end_month: 'Present',
         end_year: '',
+        isCurrent: true,
+        description: 'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
+    },
+    {
+        id: 1,
+        role: 'XSET Valorant Player',
+        start_month: 'Feb.',
+        start_year: '2020',
+        end_month: 'Nov.',
+        end_year: '2021',
+        isCurrent: false,
         description: 'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
     }
+    ]
 };
 
 const default_data = {
@@ -138,10 +151,14 @@ export default function ProfilePage(props) {
             .catch(error => console.log('error', error));
     }, [])
 
+    // const exp = experience[0];
+    // console.log(typeof exp);
+    // console.log(experience);
+
     return (
         <div className="container-fluid">
-            <Button onClick={() => Auth.federatedSignIn({ provider: "Google" })}>Sign in with Google</Button>
-            <button onClick={logout}>Sign out</button>
+            {/* <Button onClick={() => Auth.federatedSignIn({ provider: "Google" })}>Sign in with Google</Button> */}
+            {/* <button onClick={logout}>Sign out</button> */}
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
@@ -317,7 +334,21 @@ function GamesCard(props) {
 
 function ExperienceCard(props) {
     const profileData = props.profile;
+    const experiences = props.profile.experience;
     const handleShow = props.handleShow;
+
+    const experienceBlock = experiences.map((experience) => {
+        const component = (
+            <div className="experience-box" key={experience.role}>
+                <h5 className="role">{experience.role}</h5>
+                <h6 className="dates">{experience.isCurrent? experience.start_month + " " + experience.start_year + " - Present" : experience.start_month + " " + experience.start_year + " - " + experience.end_month + " " + experience.end_year}</h6>
+                <p className="description">{experience.description}</p>
+            </div>
+        );
+        return component;
+    });
+
+    // console.log(experienceBlock);
 
     return (
         <div className='bg-white card info-card border-light profile-card'>
@@ -326,16 +357,11 @@ function ExperienceCard(props) {
                     <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Experience</h1>
                         <span><button className="btn" onClick={handleShow}><img src="pics/edit.svg"></img></button></span>
-                        {/* <p>EDIT</p> */}
                     </div>
                     <hr />
                     {/* Experience */}
                     <div className="d-flex row stat-cluster">
-                        <div className="experience-box">
-                            <h5 className="role">{profileData.experience.role}</h5>
-                            <h6 className="dates">{profileData.experience.start_month + " " + profileData.experience.start_year + " - " + profileData.experience.end_month + " " + profileData.experience.end_year}</h6>
-                            <p className="description">{profileData.experience.description}</p>
-                        </div>
+                        {experienceBlock}
                     </div>
                 </div>
                 <div>
