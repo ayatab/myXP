@@ -56,11 +56,11 @@ export default function LandingPage(props) {
                 </div>
 
             </div>
-            <div className='landing-yellow-bg'>
-                <p className='landing-yellow-text text-dark '>For Companies <br></br> and Recruiters</p>
-            </div>
-            <div>
-                <div className='d-flex text-center row landing-padding  landing-bottom-background'>
+            <div className='container-fluid'>
+                <div className='row landing-yellow-bg'>
+                    <p className='landing-yellow-text text-dark '>For Companies <br></br> and Recruiters</p>
+                </div>
+                <div className='d-flex text-center row landing-padding landing-bottom-background'>
                     <div className='col'>
                         <p className='landing-text'>Create the <br></br> optimal gaming <br></br> team.</p>
                     </div>
@@ -68,8 +68,6 @@ export default function LandingPage(props) {
                         <p className='landing-text fw-normal fs-6'>Recruit talented, career-seeking individuals who will be a <br></br> valuable asset to your team. </p>
                     </div>
                 </div>
-            </div>
-            <div>
                 <div className='row footer d-flex justify-content-center'>
                     <div className='col text-center pt-5'>
                         <img src='pics/favicon.png' className='landing-logo ratio ratio-1x1'></img>
@@ -84,7 +82,7 @@ export default function LandingPage(props) {
                                 About
                             </div>
                         </div>
-                        <div className='text-center p-3'>Connect with us</div>
+                        <div className='text-center p-3 mt-4'>Connect with us</div>
                         <div className='row'>
                             <div className='col d-flex justify-content-center'>
                                 <FontAwesomeIcon icon="fa-brands fa-instagram" size="3x" className='mx-2' />
@@ -97,10 +95,10 @@ export default function LandingPage(props) {
                     <div className='col'>
                         <div className='fs-4 d-flex justify-content-center pt-5'>Contact Us</div>
                         {/* <a href="#" ><i id="social-links" className="fa fa-instagram" aria-label="instagram"></i></a> */}
-                        <p className='text-center pt-3'>joshtan1@uw.edu</p>
+                        <p className='text-center pt-3 mt-4'>joshtan1@uw.edu</p>
 
                     </div>
-                    
+
                 </div>
             </div>
         </div>
