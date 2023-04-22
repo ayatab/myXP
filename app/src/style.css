@@ -310,21 +310,13 @@ hr {
 }
 
 .welcome-text {
-  /* position: relative;
-  text-align: right;
-  color: white;
-  font-size: 100px;
-  padding-right: 5rem; */
-
-  
-
   position: absolute;
   bottom: 0;
   right: 3rem;
   font-family: 'all-round-gothic';
   font-weight: 700;
   font-size: 6vw;
-  line-height: 12vh;
+  line-height: 100px;
   color: #FFFFFF;
 }
 
@@ -444,6 +436,7 @@ hr {
 .feed-text-box {
   height: 100px;
   width: 75%;
+  padding: 1grem;
 }
 
 .feed-submit-button {
@@ -453,6 +446,13 @@ hr {
   padding: 13px 20px;
   gap: 10px;
 }
+
+.feed-btn {
+  border-radius: 50px;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
 
 .streaming-card {
   font-family: 'all-round-gothic';
