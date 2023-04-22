@@ -52,17 +52,7 @@ export default function Home(props) {
                         </div>
                     </div>
 
-                    
-                </div>
-                <div className='col streaming-card card m-2 text-center p-3'>
-                    <a href='#' className='feed-link'>@HorseEggs wins Challengers League North America - New York Times</a>
-                    <hr className='my-3'></hr>
-                    <a href='#' className='feed-link'>Joshua Tan loses horribly to 12-year-old in embarassing recent match</a>
-                    <hr className='my-3'></hr>
-                    <a href='#' className='feed-link'>Esther Cui beats reigning champion in recent nationals</a>
-                </div>
-            </div>
-            <div className='my-3 row d-flex justify-content-center'>
+                    <div className='my-3 row d-flex justify-content-center'>
                         {chat.map(message => (
                             <div className='card my-3 chat-messages streaming-card col-8'>
                                 <div className='d-flex h-auto'>
@@ -81,6 +71,17 @@ export default function Home(props) {
                         ))}
                     
             </div>
+                    
+                </div>
+                <div className='col streaming-card card m-2 text-center p-3'>
+                    <a href='#' className='feed-link'>@HorseEggs wins Challengers League North America - New York Times</a>
+                    <hr className='my-3'></hr>
+                    <a href='#' className='feed-link'>Joshua Tan loses horribly to 12-year-old in embarassing recent match</a>
+                    <hr className='my-3'></hr>
+                    <a href='#' className='feed-link'>Esther Cui beats reigning champion in recent nationals</a>
+                </div>
+            </div>
+            
         </div>
     )
 }
