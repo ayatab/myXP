@@ -14,8 +14,8 @@ const DEFAULT_USER = {
     },
     experience: {
         role: 'Sentinels Valorant IGL',
-        start_month: 'Dec. 2019',
-        start_year: '',
+        start_month: 'Dec.',
+        start_year: '2019',
         end_month: 'Present',
         end_year: '',
         description: 'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
@@ -47,28 +47,21 @@ export default function ProfilePage(props) {
     const [profileData, setProfileData] = useState(DEFAULT_USER);
     const [isExperience, setIsExperience] = useState(true);
     const [gameData, setGameData] = useState(default_data);
-    const [show, setShow] = useState(false);
-    // const [showEditExp, setShowEditExp] = useState(false);
-    // const [showInfoExp, setShowInfoExp] = useState(false);
-    
-    // const handleExpShow = () => setShowEditExperience(true);
-    // const handleExpClose = (profileObj) => {
-    //     setShowEditExperience(false);
-    // };
-    // const handleShow = () => setShowEditInfo(true);
-    // const handleClose = (profileObj) => {
-    //     setShowEditInfo(false);
-    // };
+    const [showExp, setShowExp] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
 
-    // const changeProfile = (profileObj) => {
-    //     setProfileData(profileObj);
-    // };
-
-    const handleShow = () => setShow(true);
-    const handleClose = (profileObj) => {
-        //ppush data to aws 
+    const handleShowExp = () => setShowExp(true);
+    const handleCloseExp = (profileObj) => {
+        // push data to aws 
         // profileData.
-        setShow(false);
+        setShowExp(false);
+    };
+
+    const handleShowInfo = () => setShowInfo(true);
+    const handleCloseInfo = (profileObj) => {
+        // push data to aws 
+        // profileData.
+        setShowInfo(false);
     };
 
     const changeProfile = (profileObj) => {
@@ -152,20 +145,20 @@ export default function ProfilePage(props) {
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
-            <EditProfileModal show={show} handleClose={handleClose} profileData={profileData} changeProfile={changeProfile} />
-            {/* <EditInfoModal show={show} handleClose={handleClose} profileData={profileData} changeProfile={changeProfile} /> */}
+            <EditProfileModal show={showExp} handleClose={handleCloseExp} profileData={profileData} changeProfile={changeProfile} />
+            <EditInfoModal show={showInfo} handleClose={handleCloseInfo} profileData={profileData} changeProfile={changeProfile} />
             <div className='row'>
-                <div className='col-5 info-col'>
+                <div className='col-3 info-col'>
                 </div>
-                <div className='col main-col d-flex justify-content-center'>
+                <div className='col d-flex justify-content-evenly'>
                     {/* <div className='d-flex my-3 justify-content-center'> */}
                     {isExperience &&
-                        <div className='d-flex my-3 justify-content-center'>
+                        <div className='d-flex my-3 px-2'>
                             <Link className={active} onClick={changeExperience} to="#">Experience</Link>
                             <Link className={inactive} onClick={changeGames} to="#">Games</Link>
                         </div>}
                     {!isExperience &&
-                        <div className='d-flex my-3 justify-content-center'>
+                        <div className='d-flex my-3 px-2'>
                             <Link className={inactive} onClick={changeExperience} to="#">Experience</Link>
                             <Link className={active} onClick={changeGames} to="#">Games</Link>
                         </div>}
@@ -177,12 +170,12 @@ export default function ProfilePage(props) {
 
             <div className='row'>
                 <div className='col-3 info-col'>
-                    <InfoCard profile={profileData} show={show} handleShow={handleShow} />
+                    <InfoCard profile={profileData} show={showInfo} handleShow={handleShowInfo} />
                     <div className='p-4'></div>
                     <InterestCard />
                 </div>
                 <div className='col main-col'>
-                    {isExperience && <ExperienceCard profile={profileData} show={show} handleShow={handleShow} />}
+                    {isExperience && <ExperienceCard profile={profileData} show={showExp} handleShow={handleShowExp} />}
                     {!isExperience && <GamesCard gameData={gameData} />}
                 </div>
             </div>

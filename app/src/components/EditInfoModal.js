@@ -7,28 +7,17 @@ import Modal from 'react-bootstrap/Modal';
 export default function EditInfoModal(props) {
     const show = props.show;
     const handleClose = props.handleClose;
-    // const profileData = props.profileData;
-    const [profileData, setProfileData] = useState(props.profileData);
+    const profileData = props.profileData;
+    const [updatedProfile, setUpdatedProfile] = useState(props.profileData);
 
     const changeProfile = (event) => {
-        const updatedProfile = { ...profileData, experience: { ...profileData.experience, [event.target.name]: event.target.value } };
-        setProfileData(updatedProfile);
-        props.changeProfile(updatedProfile)
+        const temp = { ...profileData, info: { ...profileData.info, [event.target.name]: event.target.value } };
+        setUpdatedProfile(temp);
     }
 
-    const checkHandler = (event) => {
-        const isChecked = event.target.checked;
-        if (isChecked) {
-            const updatedProfile = { ...profileData, experience: { ...profileData.experience, "end_month": "Present", "end_year": "" } };
-            setProfileData(updatedProfile);
-            props.changeProfile(updatedProfile);
-            console.log("checked");
-        } else {
-            const updatedProfile = { ...profileData, experience: { ...profileData.experience, "end_month": "", "end_year": "" } };
-            setProfileData(updatedProfile);
-            props.changeProfile(updatedProfile);
-        }
-        
+    const handleSave = (event) => {
+        props.changeProfile(updatedProfile);
+        handleClose();
     }
 
     return (
@@ -47,8 +36,8 @@ export default function EditInfoModal(props) {
                             <Form.Control
                                 name="pronouns"
                                 type="text"
-                                value={profileData.info.pronouns}
-                                placeholder={profileData.info.pronouns}
+                                value={updatedProfile.info.pronouns}
+                                placeholder={updatedProfile.info.pronouns}
                                 onChange={changeProfile}
                             />
                         </Form.Group>
@@ -57,8 +46,8 @@ export default function EditInfoModal(props) {
                             <Form.Control
                                 name="location"
                                 type="text"
-                                value={profileData.info.location}
-                                placeholder={profileData.info.location}
+                                value={updatedProfile.info.location}
+                                placeholder={updatedProfile.info.location}
                                 onChange={changeProfile}
                             />
                         </Form.Group>
@@ -67,8 +56,8 @@ export default function EditInfoModal(props) {
                             <Form.Control
                                 name="email"
                                 type="text"
-                                value={profileData.info.email}
-                                placeholder={profileData.info.email}
+                                value={updatedProfile.info.email}
+                                placeholder={updatedProfile.info.email}
                                 onChange={changeProfile}
                             />
                         </Form.Group>
@@ -77,8 +66,8 @@ export default function EditInfoModal(props) {
                             <Form.Control
                                 name="twitter"
                                 type="text"
-                                value={profileData.info.twitter}
-                                placeholder={profileData.info.twitter}
+                                value={updatedProfile.info.twitter}
+                                placeholder={updatedProfile.info.twitter}
                                 onChange={changeProfile}
                             />
                         </Form.Group>
@@ -88,7 +77,7 @@ export default function EditInfoModal(props) {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleSave}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

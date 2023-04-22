@@ -31,7 +31,7 @@ export default function Header(props) {
     return (
         <Navbar className="headerColor" collapseOnSelect expand="lg" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <img
                         src="pics/myxp.png"
                         width="53"

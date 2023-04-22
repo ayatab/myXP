@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Home.js';
 import Header from './Header.js';
 import ProfilePage from './ProfilePage.js';
-import EditProfile from './EditProfile.js';
 import LandingPage from './LandingPage.js';
 
 
