@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import EditExpModal from './EditExpModal.js';
 import EditInfoModal from './EditInfoModal.js';
+import EditTournModal from './EditTournModal.js';
 import Button from 'react-bootstrap/Button';
 import { Amplify, Auth } from 'aws-amplify';
 
@@ -13,7 +14,7 @@ const DEFAULT_USER = {
         twitter: 'HorseEggs22'
     },
     experience: [{
-        id: 0,
+        id: 1,
         role: 'Sentinels Valorant IGL',
         start_month: 'Dec.',
         start_year: '2021',
@@ -23,7 +24,7 @@ const DEFAULT_USER = {
         description: 'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
     },
     {
-        id: 1,
+        id: 2,
         role: 'XSET Valorant Player',
         start_month: 'Feb.',
         start_year: '2020',
@@ -32,7 +33,18 @@ const DEFAULT_USER = {
         isCurrent: false,
         description: 'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
     }
-    ]
+    ],
+    tournaments: [{
+        id: 1,
+        place: 1,
+        name: 'Valorant Challengers 2023',
+        month: '11',
+        day: '03',
+        year: '2022',
+        tier: 'B',
+        result: '0-3',
+        team: 'Sentinels'
+    }]
 };
 
 const default_data = {
@@ -62,6 +74,7 @@ export default function ProfilePage(props) {
     const [gameData, setGameData] = useState(default_data);
     const [showExp, setShowExp] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
+    const [showTourn, setShowTourn] = useState(false);
 
     const handleShowExp = () => setShowExp(true);
     const handleCloseExp = (profileObj) => {
@@ -75,6 +88,13 @@ export default function ProfilePage(props) {
         // push data to aws 
         // profileData.
         setShowInfo(false);
+    };
+
+    const handleShowTourn = () => setShowTourn(true);
+    const handleCloseTourn = (profileObj) => {
+        // push data to aws 
+        // profileData.
+        setShowTourn(false);
     };
 
     const changeProfile = (profileObj) => {
@@ -151,10 +171,6 @@ export default function ProfilePage(props) {
             .catch(error => console.log('error', error));
     }, [])
 
-    // const exp = experience[0];
-    // console.log(typeof exp);
-    // console.log(experience);
-
     return (
         <div className="container-fluid">
             {/* <Button onClick={() => Auth.federatedSignIn({ provider: "Google" })}>Sign in with Google</Button> */}
@@ -164,6 +180,7 @@ export default function ProfilePage(props) {
             {/* </div> */}
             <EditExpModal show={showExp} handleClose={handleCloseExp} profileData={profileData} changeProfile={changeProfile} />
             <EditInfoModal show={showInfo} handleClose={handleCloseInfo} profileData={profileData} changeProfile={changeProfile} />
+            <EditTournModal show={showTourn} handleClose={handleCloseTourn} profileData={profileData} changeProfile={changeProfile} />
             <div className='row'>
                 <div className='col-3 info-col'>
                 </div>
@@ -192,7 +209,7 @@ export default function ProfilePage(props) {
                     <InterestCard />
                 </div>
                 <div className='col main-col'>
-                    {isExperience && <ExperienceCard profile={profileData} show={showExp} handleShow={handleShowExp} />}
+                    {isExperience && <ExperienceCard profile={profileData} show={showExp} handleShowExp={handleShowExp} handleShowTourn={handleShowTourn}/>}
                     {!isExperience && <GamesCard gameData={gameData} />}
                 </div>
             </div>
@@ -202,18 +219,16 @@ export default function ProfilePage(props) {
 
 function HeaderCard(props) {
     return (
-        // <div className='card info-cards '>
-        <div className="d-flex flex-column justify-content-center bg-white card border-light profile-card">
-            <img src='pics/profilebackground.png' className='position-relative profile-background' />
-            <div className='gamer-tag'>
-                <p className='m-0'>Horse_egg</p>
+        <div className="bg-white card border-light profile-card">
+            <div className="d-flex flex-column justify-content-center">
+                <img src='pics/profilebackground.png' className='position-relative profile-background' />
+                <div className='gamer-tag'>
+                    <p className='m-0'>Horse_egg</p>
+                </div>
+                <img src='pics/alexpic.png' className='card-img mx-auto profile-img'></img>
+                <div className='status'>Gaming 😎</div>
             </div>
-            {/* <div className='card-body card-body-height'> */}
-            <img src='pics/alexpic.png' className='card-img mx-auto profile-img'></img>
-            {/* </div> */}
-            <div className='status'>Gaming 😎</div>
         </div>
-        // </div>
     )
 }
 
@@ -335,20 +350,59 @@ function GamesCard(props) {
 function ExperienceCard(props) {
     const profileData = props.profile;
     const experiences = props.profile.experience;
-    const handleShow = props.handleShow;
+    const tournaments = props.profile.tournaments;
+    const handleShowExp = props.handleShowExp;
+    const handleShowTourn = props.handleShowTourn;
+    
 
     const experienceBlock = experiences.map((experience) => {
         const component = (
             <div className="experience-box" key={experience.role}>
                 <h5 className="role">{experience.role}</h5>
-                <h6 className="dates">{experience.isCurrent? experience.start_month + " " + experience.start_year + " - Present" : experience.start_month + " " + experience.start_year + " - " + experience.end_month + " " + experience.end_year}</h6>
+                <h6 className="dates">{experience.isCurrent ? experience.start_month + " " + experience.start_year + " - Present" : experience.start_month + " " + experience.start_year + " - " + experience.end_month + " " + experience.end_year}</h6>
                 <p className="description">{experience.description}</p>
             </div>
         );
         return component;
     });
 
-    // console.log(experienceBlock);
+    const tournamentBlock = tournaments.map((tournament) => {
+        const component = (
+            <div className="card mb-3 tourn-card" key={tournament.id}>
+                <div className="row g-0">
+                    <div className="col-md-2 text-center tourn-place d-flex justify-content-center">
+                        <h1>1</h1>
+                        <h2>st</h2>
+                    </div>
+                    <div className="col-md-10 tourn-bg">
+                        <div className="card-body tourn-info d-flex justify-content-evenly">
+                            <div className="text-center">
+                                <div><h3>Tournament</h3></div>
+                                <div><p>{tournament.name}</p></div>
+                            </div>
+                            <div className="text-center">
+                                <div><h3>Date</h3></div>
+                                <div><p>{tournament.month + '-' + tournament.day + '-' + tournament.year}</p></div>
+                            </div>
+                            <div className="text-center">
+                                <div><h3>Tier</h3></div>
+                                <div><p>{"Tier-" + tournament.tier}</p></div>
+                            </div>
+                            <div className="text-center">
+                                <div><h3>Result</h3></div>
+                                <div><p>{tournament.result}</p></div>
+                            </div>
+                            <div className="text-center d-flex flex-column">
+                                <div><h3>Team</h3></div>
+                                <div><img src={'pics/' + tournament.team + '.png'} /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+        return component;
+    });
 
     return (
         <div className='bg-white card info-card border-light profile-card'>
@@ -356,22 +410,25 @@ function ExperienceCard(props) {
                 <div>
                     <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Experience</h1>
-                        <span><button className="btn" onClick={handleShow}><img src="pics/edit.svg"></img></button></span>
+                        <span><button className="btn" onClick={handleShowExp}><img src="pics/edit.svg"></img></button></span>
                     </div>
-                    <hr />
+                    <hr className='exp-divider' />
                     {/* Experience */}
                     <div className="d-flex row stat-cluster">
                         {experienceBlock}
                     </div>
                 </div>
                 <div>
-                    <div className='d-flex'>
+                    <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Tournament History</h1>
+                        <span><button className="btn" onClick={handleShowTourn}><img src="pics/edit.svg"></img></button></span>
+
                         {/* <p>EDIT</p> */}
                     </div>
-                    <hr />
-                    {/* Experience */}
-                    <div className="card mb-3 tourn-card">
+                    <hr className='exp-divider' />
+                    {/* Tourn Info */}
+                    {tournamentBlock}
+                    {/* <div className="card mb-3 tourn-card">
                         <div className="row g-0">
                             <div className="col-md-2 text-center tourn-place d-flex justify-content-center">
                                 <h1>1</h1>
@@ -402,26 +459,33 @@ function ExperienceCard(props) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div>
                     <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Education</h1>
                         {/* <p>EDIT</p> */}
                     </div>
-                    <hr />
-                    {/* Experience */}
+                    <hr className='exp-divider' />
+                    {/* Education */}
                     <div className="d-flex row stat-cluster">
-                        <div className="experience-box">
+                        {/* <div className="experience-box">
                             <h5>University of Washington</h5>
                             <h6>Dec 2019 - Present</h6>
                             <p></p>
-                        </div>
+                        </div> */}
+                        <ul className="ed-list">
+                            <li>
+                                <div className="d-flex flex-grow-1 align-self-center">
+                                    <img className="ed-logo" src="pics/uw.png" />
+                                    <div className="d-flex flex-column justify-content-evenly">
+                                        <h5 className="school-name">University of Washington</h5>
+                                        <h6 className="school-date">Dec 2019 - Present</h6>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                {/* Education */}
-                <div className="d-flex row stat-cluster text-center">
-
                 </div>
             </div>
         </div >
@@ -433,15 +497,15 @@ function InfoCard(props) {
 
     // const headMap = headList.map((headName) => {
     //     const component = (
-    //         <li>
-    //             <div className="d-flex flex-grow-1 align-self-center">
-    //                 <img className="info-icon" src={"pics/profile/" + headName +".svg"} />
-    //                 <div className="d-flex flex-column">
-    //                     <h2 className="info-head">{headName}</h2>
-    //                     <p className="info-text">he/him</p>
-    //                 </div>
-    //             </div>
-    //         </li>
+    // <li>
+    //     <div className="d-flex flex-grow-1 align-self-center">
+    //         <img className="info-icon" src={"pics/profile/" + headName +".svg"} />
+    //         <div className="d-flex flex-column">
+    //             <h2 className="info-head">{headName}</h2>
+    //             <p className="info-text">he/him</p>
+    //         </div>
+    //     </div>
+    // </li>
     //     );
     //     return component;
     // })

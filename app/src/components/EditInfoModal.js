@@ -74,12 +74,7 @@ export default function EditInfoModal(props) {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleSave}>
-                        Save Changes
-                    </Button>
+                    <Button className='save' onClick={handleSave}>Save</Button>
                 </Modal.Footer>
             </Modal>
         </div>
