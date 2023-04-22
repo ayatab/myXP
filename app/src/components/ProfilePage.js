@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import EditModal from './EditModal.js';
+import EditProfileModal from './EditProfileModal.js';
+import EditInfoModal from './EditInfoModal.js';
 import Button from 'react-bootstrap/Button';
-import { Amplify, Auth, graphqlOperation } from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 
 const DEFAULT_USER = {
     info: {
-        pronouns:'he/him',
-        location:'Seattle, WA',
-        email:'AlexanderJHeng@gmail.com',
-        twitter:'HorseEggs22'
+        pronouns: 'he/him',
+        location: 'Seattle, WA',
+        email: 'AlexanderJHeng@gmail.com',
+        twitter: 'HorseEggs22'
     },
     experience: {
-        role:'Sentinels Valorant IGL',
-        start_date:'Dec. 2019',
-        end_date:'Present',
-        description:'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
+        role: 'Sentinels Valorant IGL',
+        start_month: 'Dec.',
+        start_year: '2019',
+        end_month: 'Present',
+        end_year: '',
+        description: 'Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste. Ut voluptatibus fuga id debitis ullam quo voluptatem rerum eos velit beatae.Lorem ipsum dolor sit amet. Ut facilis perferendis est omnis quae aut maiores nisi eum possimus omnis sed quia iste.'
     }
 };
 
@@ -44,20 +47,32 @@ export default function ProfilePage(props) {
     const [profileData, setProfileData] = useState(DEFAULT_USER);
     const [isExperience, setIsExperience] = useState(true);
     const [gameData, setGameData] = useState(default_data);
-    const [show, setShow] = useState(false);
+    const [showExp, setShowExp] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
 
-    const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
+    const handleShowExp = () => setShowExp(true);
+    const handleCloseExp = (profileObj) => {
+        // push data to aws 
+        // profileData.
+        setShowExp(false);
+    };
+
+    const handleShowInfo = () => setShowInfo(true);
+    const handleCloseInfo = (profileObj) => {
+        // push data to aws 
+        // profileData.
+        setShowInfo(false);
+    };
+
+    const changeProfile = (profileObj) => {
+        setProfileData(profileObj);
+    };
 
     const active = "btn profile-btn btn-dark"
     const inactive = "btn profile-btn"
 
     let expStyle = active;
     let gameStyle = inactive;
-
-    const changeProfileData = (profileObj) => {
-        setProfileData(profileObj);
-    }
 
     const changeExperience = (event) => {
         console.log("exp");
@@ -87,9 +102,10 @@ export default function ProfilePage(props) {
     };
 
     async function logout() {
-        const logout = await Auth.signOut();
-        console.log(logout);
+        const user = await Auth.signOut()
+        console.log(user)
     }
+
 
     useEffect(() => {
         fetch("https://fortnite-api.com/v2/stats/br/v2?name=Prospеring", requestOptions)
@@ -120,27 +136,29 @@ export default function ProfilePage(props) {
                 setGameData(datajson);
             })
             .catch(error => console.log('error', error));
-    })
+    }, [])
 
     return (
         <div className="container-fluid">
-            <Button onClick={logout}>LOGOUT</Button>
+            <Button onClick={() => Auth.federatedSignIn({ provider: "Google" })}>Sign in with Google</Button>
+            <button onClick={logout}>Sign out</button>
             {/* <div className='row'> */}
             <HeaderCard />
             {/* </div> */}
-            <EditModal show={show} handleClose={handleClose} changeProfileData={changeProfileData} profileData={profileData}/>
+            <EditProfileModal show={showExp} handleClose={handleCloseExp} profileData={profileData} changeProfile={changeProfile} />
+            <EditInfoModal show={showInfo} handleClose={handleCloseInfo} profileData={profileData} changeProfile={changeProfile} />
             <div className='row'>
-                <div className='col-5 info-col'>
+                <div className='col-3 info-col'>
                 </div>
-                <div className='col main-col d-flex justify-content-center'>
+                <div className='col d-flex justify-content-evenly'>
                     {/* <div className='d-flex my-3 justify-content-center'> */}
                     {isExperience &&
-                        <div className='d-flex my-3 justify-content-center'>
+                        <div className='d-flex my-3 px-2'>
                             <Link className={active} onClick={changeExperience} to="#">Experience</Link>
                             <Link className={inactive} onClick={changeGames} to="#">Games</Link>
                         </div>}
                     {!isExperience &&
-                        <div className='d-flex my-3 justify-content-center'>
+                        <div className='d-flex my-3 px-2'>
                             <Link className={inactive} onClick={changeExperience} to="#">Experience</Link>
                             <Link className={active} onClick={changeGames} to="#">Games</Link>
                         </div>}
@@ -152,12 +170,12 @@ export default function ProfilePage(props) {
 
             <div className='row'>
                 <div className='col-3 info-col'>
-                    <InfoCard profile={profileData} />
+                    <InfoCard profile={profileData} show={showInfo} handleShow={handleShowInfo} />
                     <div className='p-4'></div>
                     <InterestCard />
                 </div>
                 <div className='col main-col'>
-                    {isExperience && <ExperienceCard profile={profileData} show={show} handleShow={handleShow} />}
+                    {isExperience && <ExperienceCard profile={profileData} show={showExp} handleShow={handleShowExp} />}
                     {!isExperience && <GamesCard gameData={gameData} />}
                 </div>
             </div>
@@ -298,7 +316,7 @@ function GamesCard(props) {
 }
 
 function ExperienceCard(props) {
-    const [profileData, setProfileData] = useState(props.profile);
+    const profileData = props.profile;
     const handleShow = props.handleShow;
 
     return (
@@ -315,7 +333,7 @@ function ExperienceCard(props) {
                     <div className="d-flex row stat-cluster">
                         <div className="experience-box">
                             <h5 className="role">{profileData.experience.role}</h5>
-                            <h6 className="dates">{profileData.experience.start_date + " - " + profileData.experience.end_date}</h6>
+                            <h6 className="dates">{profileData.experience.start_month + " " + profileData.experience.start_year + " - " + profileData.experience.end_month + " " + profileData.experience.end_year}</h6>
                             <p className="description">{profileData.experience.description}</p>
                         </div>
                     </div>
@@ -401,12 +419,16 @@ function InfoCard(props) {
     //     );
     //     return component;
     // })
-    const [profileData, setProfileData] = useState(props.profile);
+    const profileData = props.profile;
+    const handleShow = props.handleShow;
 
     return (
         <div className="card side-card border-0"   >
             <div className="card-body">
-                <h1 className="card-title info-header">Personal Information</h1>
+                <div className='d-flex justify-content-between'>
+                    <h1 className="card-title info-header">Personal Information</h1>
+                    <span><button className="btn" onClick={handleShow}><img src="pics/edit.svg"></img></button></span>
+                </div>
                 <hr />
                 <ul className="info-list">
                     {/* {headMap} */}

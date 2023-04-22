@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextAreaField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  TextAreaField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { PlayerModel } from "../models";
 import { fetchByPath, validateField } from "./utils";
@@ -26,23 +32,29 @@ export default function PlayerModelCreateForm(props) {
     games: "",
     experiences: "",
     user_info: "",
+    profile_img: "",
   };
   const [games, setGames] = React.useState(initialValues.games);
   const [experiences, setExperiences] = React.useState(
     initialValues.experiences
   );
   const [user_info, setUser_info] = React.useState(initialValues.user_info);
+  const [profile_img, setProfile_img] = React.useState(
+    initialValues.profile_img
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setGames(initialValues.games);
     setExperiences(initialValues.experiences);
     setUser_info(initialValues.user_info);
+    setProfile_img(initialValues.profile_img);
     setErrors({});
   };
   const validations = {
     games: [{ type: "JSON" }],
     experiences: [{ type: "JSON" }],
     user_info: [{ type: "JSON" }],
+    profile_img: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -73,6 +85,7 @@ export default function PlayerModelCreateForm(props) {
           games,
           experiences,
           user_info,
+          profile_img,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -129,6 +142,7 @@ export default function PlayerModelCreateForm(props) {
               games: value,
               experiences,
               user_info,
+              profile_img,
             };
             const result = onChange(modelFields);
             value = result?.games ?? value;
@@ -154,6 +168,7 @@ export default function PlayerModelCreateForm(props) {
               games,
               experiences: value,
               user_info,
+              profile_img,
             };
             const result = onChange(modelFields);
             value = result?.experiences ?? value;
@@ -179,6 +194,7 @@ export default function PlayerModelCreateForm(props) {
               games,
               experiences,
               user_info: value,
+              profile_img,
             };
             const result = onChange(modelFields);
             value = result?.user_info ?? value;
@@ -193,6 +209,33 @@ export default function PlayerModelCreateForm(props) {
         hasError={errors.user_info?.hasError}
         {...getOverrideProps(overrides, "user_info")}
       ></TextAreaField>
+      <TextField
+        label="Profile img"
+        isRequired={false}
+        isReadOnly={false}
+        value={profile_img}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              games,
+              experiences,
+              user_info,
+              profile_img: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.profile_img ?? value;
+          }
+          if (errors.profile_img?.hasError) {
+            runValidationTasks("profile_img", value);
+          }
+          setProfile_img(value);
+        }}
+        onBlur={() => runValidationTasks("profile_img", profile_img)}
+        errorMessage={errors.profile_img?.errorMessage}
+        hasError={errors.profile_img?.hasError}
+        {...getOverrideProps(overrides, "profile_img")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
