@@ -31,13 +31,14 @@ export default function Home(props) {
                         <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@User#1</p>
                     </div>
                     <div className='d-flex h-auto mt-3 justify-content-center'>
-                        <img src='pics/justin.png' className='feed-img'></img>
+                        <img src='pics/anjuli.png' className='feed-img'></img>
                         <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@User#2</p>
                     </div>
-                    <div className='d-flex h-auto mt-3 justify-content-center'>
-                        <img src='pics/ayata.png' className='feed-img'></img>
+                    <div className='d-flex h-auto mt-3 justify-content-center mb-2'>
+                        <img src='pics/victor.png' className='feed-img'></img>
                         <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@User#3</p>
                     </div>
+                    {/* <hr /> */}
                 </div>
                 <div className='col-8 h-auto'>
                     <div className='card p-3 m-2 streaming-card'>
@@ -47,13 +48,19 @@ export default function Home(props) {
                         </div>
                         <div className="py-3 d-flex">
                             <Form className='d-flex w-100 justify-content-center px-4' onSubmit={handleSubmit}>
-                                <Form.Control as='textarea' rows={3} value={message} className="form-control feed-text-box" onChange={handleMessageChange} />
+                                <Form.Control 
+                                    as='textarea' 
+                                    rows={3} 
+                                    value={message} 
+                                    className="form-control feed-text-box" 
+                                    onChange={handleMessageChange}
+                                    placeholder="Write a post!" />
                                 <button type="submit" className="ms-3 feed-submit-button mt-auto feed-font" onClick={handleSubmit}>Submit</button>
                             </Form>
                         </div>
                     </div>
 
-                    <div className='d-flex justify-content-between mt-4 mx-2'>
+                    <div className='d-flex justify-content-evenly mt-4 mx-2'>
                         <button type="button" className="btn btn-dark feed-btn feed-font">Discover</button>
                         <button type="button" className="btn btn-dark feed-btn feed-font">Following</button>
                         <button type="button" className="btn btn-dark feed-btn feed-font">Company</button>
