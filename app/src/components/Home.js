@@ -3,6 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faComment, faHeart, faRetweet, faShare, fas, } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Form from 'react-bootstrap/Form';
+import messages from '../data/feed_log.json';
 
 library.add(faHeart, faComment, faShare, faRetweet)
 
@@ -60,6 +61,22 @@ export default function Home(props) {
                     </div>
 
                     <div className='mt-1 row d-flex justify-content-center mx-2'>
+                    {messages.map(message => (
+                        <div className='card my-3 chat-messages streaming-card'>
+                            <div className='d-flex h-auto'>
+                                <img src={message.userImg} className='feed-img'></img>
+                                <p className='align-self-center fw-bold mb-0 ps-3 feed-font'>{message.userName}</p>
+                            </div>
+                            <p className='m-0 py-3'>{message.text}</p>
+                            <div className='d-flex justify-content-between py-2'>
+                                <FontAwesomeIcon icon="fa-solid fa-heart" className='pe-5 fs-4' />
+                                <FontAwesomeIcon icon="fa-solid fa-comment" className='pe-5 fs-4' />
+                                <FontAwesomeIcon icon="fa-solid fa-retweet" className='pe-5 fs-4' />
+                                <FontAwesomeIcon icon="fa-solid fa-share" className='pe-5 fs-4' />
+                            </div>
+                        </div>
+
+                    ))}
                     {chat.map(message => (
                         <div className='card my-3 chat-messages streaming-card'>
                             <div className='d-flex h-auto'>

@@ -1,12 +1,17 @@
 [
     {
-        "userName": "jt511",
-        "userImg": "/img/Parrot.png",
+        "userName": "jt511#eh",
+        "userImg": "/pics/justin.png",
         "text": "Looking for opportunities!"
     },
     {
-        "userName": "ELV Justin",
-        "userImg": "/img/Parrot.png",
+        "userName": "itbemeesther",
+        "userImg": "/pics/esther.png",
         "text": "Check out these clips I got the other day!"
+    },
+    {
+        "userName": "ayabon",
+        "userImg": "/pics/ayata.png",
+        "text": "Damn it was kind of hard to get out of bed today hahaha let's lose in ranked!"
     }
 ]
