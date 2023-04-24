@@ -436,7 +436,7 @@ hr {
 .feed-text-box {
   height: 100px;
   width: 75%;
-  padding: 1grem;
+  padding: 1rem;
 }
 
 .feed-submit-button {
@@ -449,8 +449,11 @@ hr {
 
 .feed-btn {
   border-radius: 50px;
-  padding-left: 4vw;
-  padding-right: 4vw;
+  width: 100%;
+  margin-right: 5px;
+  margin-left: 5px;
+  /* padding-left: 5vw; */
+  /* padding-right: 5vw; */
 }
 
 

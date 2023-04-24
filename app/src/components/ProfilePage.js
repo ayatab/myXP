@@ -172,7 +172,7 @@ export default function ProfilePage(props) {
     }, [])
 
     return (
-        <div className="container-fluid">
+        <div className="container">
             {/* <Button onClick={() => Auth.federatedSignIn({ provider: "Google" })}>Sign in with Google</Button> */}
             {/* <button onClick={logout}>Sign out</button> */}
             {/* <div className='row'> */}
