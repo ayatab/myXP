@@ -167,7 +167,7 @@ hr {
 
 /* SIDE CARD */
 .side-card {
-  padding: 45px 35px;
+  padding: 50px 25px 25px 30px;
   margin: 0px 16px;
   border-radius: 2em;
 }
@@ -285,15 +285,20 @@ hr {
 }
 
 .interest-block {
-  display: inline-block;
-  width: min-content;
+  /* display: inline-block; */
+  width: auto;
   border: 1.5px solid #000000;
   border-radius: 23.5px;
-  margin-right: 3px;
+  margin-right: 5px;
+  margin-top: 16px;
 }
 
 .interest-block p {
   padding: 0px 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 164.52%;
 }
 
 /* ALL FOR LANDING PAGE */
@@ -368,9 +373,37 @@ hr {
 }
 
 .tourn-place {
-  background-color: #FFE17D;
   border-radius: 23.5px 0px 0px 23.5px;
 }
+
+.tourn-bg {
+  border-radius: 0px 23.5px 23.5px 0px;
+}
+
+.tourn-first-place {
+  background-color: #FFE17D;
+}
+
+.tourn-first-bg {
+  background-color: #FFF9E5;
+}
+
+.tourn-second-place {
+  background-color: #C1D3FF;
+}
+
+.tourn-second-bg {
+  background-color: #EEF3FF;
+}
+
+.tourn-third-place {
+  background-color: #EFBCAC;
+}
+
+.tourn-third-bg {
+  background-color: #FFF2EE;
+}
+
 
 .tourn-place h1 {
   margin: auto 0px auto auto;
@@ -385,13 +418,6 @@ hr {
   font-family: 'all-round-gothic';
   font-size: 20px;
   line-height: 125%;
-}
-
-.tourn-bg {
-  background-color: #FFF9E5;
-  border-radius: 0px 23.5px 23.5px 0px;
-
-  /* border-radius: 40px; */
 }
 
 .tourn-info {
@@ -424,6 +450,10 @@ hr {
   line-height: 164.52%;
   /* or 39px */
   text-align: center;
+}
+
+.team-pic {
+  width: 10px;
 }
 
 /* FEED STYLING */
@@ -569,7 +599,7 @@ hr {
 
 .modal-content {
   padding: 3rem;
-  border-radius: 40px;
+  border-radius: 30px;
 }
 
 .modal-title {
@@ -615,12 +645,12 @@ hr {
   background: #00C6A2;
   border-color: #00C6A2;
   border-radius: 50px;
-  }
+}
 
-  .modal-header {
-    border-bottom: 0px;
-  }
+.modal-header {
+  border-bottom: 0px;
+}
 
-  .modal-footer {
-    border-top: 0px;
-  }
+.modal-footer {
+  border-top: 0px;
+}

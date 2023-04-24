@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import EditExpModal from './EditExpModal.js';
 import EditInfoModal from './EditInfoModal.js';
 import EditTournModal from './EditTournModal.js';
-import Button from 'react-bootstrap/Button';
+import EditInterestModal from './EditInterestModal.js';
 import { Amplify, Auth } from 'aws-amplify';
 
 const DEFAULT_USER = {
     info: {
         pronouns: 'he/him',
         location: 'Seattle, WA',
-        email: 'AlexanderJHeng@gmail.com',
+        email: 'AlexanderHeng@gmail.com',
         twitter: 'HorseEggs22'
     },
     experience: [{
@@ -44,7 +44,19 @@ const DEFAULT_USER = {
         tier: 'B',
         result: '0-3',
         team: 'Sentinels'
-    }]
+    },
+    {
+        id: 2,
+        place: 2,
+        name: 'Telepath Valorant Open',
+        month: '12',
+        day: '03',
+        year: '2021',
+        tier: 'B',
+        result: '2-1',
+        team: 'Sentinels'
+    }],
+    interests: ['Hiking', 'Animation', 'Sushi','Baking', '3D Modeling']
 };
 
 const default_data = {
@@ -75,6 +87,7 @@ export default function ProfilePage(props) {
     const [showExp, setShowExp] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
     const [showTourn, setShowTourn] = useState(false);
+    const [showInterest, setShowInterest] = useState(false);
 
     const handleShowExp = () => setShowExp(true);
     const handleCloseExp = (profileObj) => {
@@ -95,6 +108,13 @@ export default function ProfilePage(props) {
         // push data to aws 
         // profileData.
         setShowTourn(false);
+    };
+
+    const handleShowInterest = () => setShowInterest(true);
+    const handleCloseInterest = (profileObj) => {
+        // push data to aws 
+        // profileData.
+        setShowInterest(false);
     };
 
     const changeProfile = (profileObj) => {
@@ -181,6 +201,7 @@ export default function ProfilePage(props) {
             <EditExpModal show={showExp} handleClose={handleCloseExp} profileData={profileData} changeProfile={changeProfile} />
             <EditInfoModal show={showInfo} handleClose={handleCloseInfo} profileData={profileData} changeProfile={changeProfile} />
             <EditTournModal show={showTourn} handleClose={handleCloseTourn} profileData={profileData} changeProfile={changeProfile} />
+            <EditInterestModal show={showInterest} handleClose={handleCloseInterest} profileData={profileData} changeProfile={changeProfile} />
             <div className='row'>
                 <div className='col-3 info-col'>
                 </div>
@@ -206,10 +227,10 @@ export default function ProfilePage(props) {
                 <div className='col-3 info-col'>
                     <InfoCard profile={profileData} show={showInfo} handleShow={handleShowInfo} />
                     <div className='p-4'></div>
-                    <InterestCard />
+                    <InterestCard profile={profileData} show={showInfo} handleShow={handleShowInterest} />
                 </div>
                 <div className='col main-col'>
-                    {isExperience && <ExperienceCard profile={profileData} show={showExp} handleShowExp={handleShowExp} handleShowTourn={handleShowTourn}/>}
+                    {isExperience && <ExperienceCard profile={profileData} show={showExp} handleShowExp={handleShowExp} handleShowTourn={handleShowTourn} />}
                     {!isExperience && <GamesCard gameData={gameData} />}
                 </div>
             </div>
@@ -353,7 +374,7 @@ function ExperienceCard(props) {
     const tournaments = props.profile.tournaments;
     const handleShowExp = props.handleShowExp;
     const handleShowTourn = props.handleShowTourn;
-    
+
 
     const experienceBlock = experiences.map((experience) => {
         const component = (
@@ -367,34 +388,48 @@ function ExperienceCard(props) {
     });
 
     const tournamentBlock = tournaments.map((tournament) => {
+        let place_text = 'th';
+        let place_class = ' tourn-first-place';
+        let bg_class = ' tourn-first-bg';
+        if (tournament.place === 1) {
+            place_text = 'st';
+        } else if (tournament.place === 2) {
+            place_text = 'nd';
+            place_class = ' tourn-second-place';
+            bg_class = ' tourn-second-bg';
+        } else if (tournament.place === 3) {
+            place_text = 'rd';
+            place_class = ' tourn-third-place';
+            bg_class = ' tourn-third-bg';
+        }
         const component = (
             <div className="card mb-3 tourn-card" key={tournament.id}>
                 <div className="row g-0">
-                    <div className="col-md-2 text-center tourn-place d-flex justify-content-center">
-                        <h1>1</h1>
-                        <h2>st</h2>
+                    <div className={"col-md-2 text-center tourn-place d-flex justify-content-center" + place_class}>
+                        <h1>{tournament.place}</h1>
+                        <h2>{place_text}</h2>
                     </div>
-                    <div className="col-md-10 tourn-bg">
+                    <div className={"col-md-10 tourn-bg" + bg_class}>
                         <div className="card-body tourn-info d-flex justify-content-evenly">
                             <div className="text-center">
                                 <div><h3>Tournament</h3></div>
                                 <div><p>{tournament.name}</p></div>
                             </div>
-                            <div className="text-center">
+                            <div className="text-center d-flex flex-column justify-content-center">
                                 <div><h3>Date</h3></div>
                                 <div><p>{tournament.month + '-' + tournament.day + '-' + tournament.year}</p></div>
                             </div>
-                            <div className="text-center">
+                            <div className="text-center d-flex flex-column justify-content-center">
                                 <div><h3>Tier</h3></div>
                                 <div><p>{"Tier-" + tournament.tier}</p></div>
                             </div>
-                            <div className="text-center">
+                            <div className="text-center d-flex flex-column justify-content-center">
                                 <div><h3>Result</h3></div>
                                 <div><p>{tournament.result}</p></div>
                             </div>
-                            <div className="text-center d-flex flex-column">
+                            <div className="text-center d-flex flex-column justify-content-center">
                                 <div><h3>Team</h3></div>
-                                <div><img src={'pics/' + tournament.team + '.png'} /></div>
+                                <div><img className="mb-3" width="125" height="27" src={'pics/' + tournament.team + '.png'} /></div>
                             </div>
                         </div>
                     </div>
@@ -428,42 +463,11 @@ function ExperienceCard(props) {
                     <hr className='exp-divider' />
                     {/* Tourn Info */}
                     {tournamentBlock}
-                    {/* <div className="card mb-3 tourn-card">
-                        <div className="row g-0">
-                            <div className="col-md-2 text-center tourn-place d-flex justify-content-center">
-                                <h1>1</h1>
-                                <h2>st</h2>
-                            </div>
-                            <div className="col-md-10 tourn-bg">
-                                <div className="card-body tourn-info d-flex justify-content-evenly">
-                                    <div className="text-center">
-                                        <div><h3>Tournament</h3></div>
-                                        <div><p>Valorant Challengers 2023</p></div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div><h3>Date</h3></div>
-                                        <div><p>11-03-2022</p></div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div><h3>Tier</h3></div>
-                                        <div><p>Tier-B</p></div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div><h3>Result</h3></div>
-                                        <div><p>0-3</p></div>
-                                    </div>
-                                    <div className="text-center d-flex flex-column">
-                                        <div><h3>Team</h3></div>
-                                        <div><img src='pics/sentinels.png' /></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
                 <div>
                     <div className='d-flex justify-content-between'>
                         <h1 className='header-text'>Education</h1>
+                        <span><button className="btn" onClick={handleShowTourn}><img src="pics/edit.svg"></img></button></span>
                         {/* <p>EDIT</p> */}
                     </div>
                     <hr className='exp-divider' />
@@ -494,7 +498,6 @@ function ExperienceCard(props) {
 
 function InfoCard(props) {
     // const headList = ["Pronouns", "Based In", "Email", "Twitter"];
-
     // const headMap = headList.map((headName) => {
     //     const component = (
     // <li>
@@ -517,10 +520,10 @@ function InfoCard(props) {
             <div className="card-body">
                 <div className='d-flex justify-content-between'>
                     <h1 className="card-title info-header">Personal Information</h1>
-                    <span><button className="btn" onClick={handleShow}><img src="pics/edit.svg"></img></button></span>
+                    {/* <span><button className="btn" onClick={handleShow}><img src="pics/edit.svg"></img></button></span> */}
                 </div>
                 <hr />
-                <ul className="info-list">
+                <ul className="info-list mb-0">
                     {/* {headMap} */}
                     <li className="info-item">
                         <div className="align-self-center">
@@ -559,25 +562,41 @@ function InfoCard(props) {
                         </div>
                     </li>
                 </ul>
+                <div className='d-flex justify-content-end'>
+                    <span><button className="btn" onClick={handleShow}><img src="pics/edit.svg"></img></button></span>
+                </div>
+
             </div>
         </div>
     )
 }
 
 function InterestCard(props) {
+    const handleShow = props.handleShow;
+    const profileData = props.profile;
+
+    const interestsBlock = profileData.interests.map((interest) => {
+        const component = (
+            <div className='interest-block'>
+                <p className='m-1'>{interest}</p>
+            </div>
+        );
+        return component;
+    })
+
     return (
         <div className="card side-card border-0"   >
             <div className="card-body">
-                <h1 className="card-title info-header">Interests</h1>
+                <div className='d-flex justify-content-between'>
+                    <h1 className="card-title info-header">Interests</h1>
+                </div>
                 <hr />
             </div>
-            <div className="d-flex">
-                <div className='interest-block'>
-                    <p className='m-1'>Hiking</p>
-                </div>
-                <div className='interest-block'>
-                    <p className='m-1'>Animation</p>
-                </div>
+            <div className="d-flex flex-wrap">
+                {interestsBlock}
+            </div>
+            <div className='d-flex justify-content-end mt-3'>
+                <span><button className="btn" onClick={handleShow}><img src="pics/edit.svg"></img></button></span>
             </div>
         </div>
     )
