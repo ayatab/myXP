@@ -5,6 +5,7 @@ import EditInfoModal from './EditInfoModal.js';
 import EditTournModal from './EditTournModal.js';
 import EditInterestModal from './EditInterestModal.js';
 import { Amplify, Auth } from 'aws-amplify';
+import Card from 'react-bootstrap/Card';
 
 const DEFAULT_USER = {
     info: {
@@ -56,7 +57,7 @@ const DEFAULT_USER = {
         result: '2-1',
         team: 'Sentinels'
     }],
-    interests: ['Hiking', 'Animation', 'Sushi','Baking', '3D Modeling']
+    interests: ['Hiking', 'Animation', 'Sushi', 'Baking', '3D Modeling']
 };
 
 const default_data = {
@@ -196,7 +197,9 @@ export default function ProfilePage(props) {
             {/* <Button onClick={() => Auth.federatedSignIn({ provider: "Google" })}>Sign in with Google</Button> */}
             {/* <button onClick={logout}>Sign out</button> */}
             {/* <div className='row'> */}
-            <HeaderCard />
+            <div className='row'>
+                <HeaderCard />
+            </div>
             {/* </div> */}
             <EditExpModal show={showExp} handleClose={handleCloseExp} profileData={profileData} changeProfile={changeProfile} />
             <EditInfoModal show={showInfo} handleClose={handleCloseInfo} profileData={profileData} changeProfile={changeProfile} />
@@ -242,14 +245,37 @@ function HeaderCard(props) {
     return (
         <div className="bg-white card border-light profile-card">
             <div className="d-flex flex-column justify-content-center">
-                <img src='pics/profilebackground.png' className='position-relative profile-background' />
-                <div className='gamer-tag'>
-                    <p className='m-0'>Horse_egg</p>
+                <img src='pics/profilebg.jpg' className='position-relative profile-background' />
+                <div className='name-block d-flex align-items-end'>
+                    <p className='m-0 gamer-tag'>Horse_egg</p>
+                    <p className='m-0 real-name'>Alex H.</p>
+                    {/* <p>test</p> */}
                 </div>
                 <img src='pics/alexpic.png' className='card-img mx-auto profile-img'></img>
-                <div className='status'>Gaming 😎</div>
+                <div className='status'>Top 0.1% VALORANT NA</div>
+                <div className='tags'>
+                    <img src='pics/gamer.png' className='tag'></img>
+                    <img src='pics/streamer.png' className='tag'></img>
+                </div>
+            </div>
+            <div className='d-flex justify-content-end edit-button'>
+                <span><button className="btn" onClick={null}><img src="pics/edit.svg"></img></button></span>
             </div>
         </div>
+
+        // <>
+        //     <Card className='profile-card'>
+        //         <Card.Img className='profile-background' variant="top" src="pics/profilebg.jpg" />
+        //         <img src='pics/alexpic.png' className='profile-img'></img>
+        //         <Card.Body>
+        //             <Card.Text>
+        //                 Some quick example text to build on the card title and make up the
+        //                 bulk of the card's content.
+        //             </Card.Text>
+        //         </Card.Body>
+        //     </Card>
+        // </>
+
     )
 }
 
@@ -260,12 +286,12 @@ function GamesCard(props) {
             <div className='card-body'>
                 {/* <a className="btn btn-dark my-5 mx-5" href="#" role="button">some placeholder cool button before i set up the actual button thing lol</a> */}
                 <div className='d-flex justify-content-between'>
-                    <h4 className='experience-header'>SOLO</h4>
+                    <h4 className='header-text'>SOLO</h4>
                     <p>{gameData.solo.matches} Matches</p>
                 </div>
                 <hr />
                 {/* this is all solo stats */}
-                <div className="d-flex row stat-cluster text-center mx-2">
+                <div className="d-flex row stat-cluster text-center mx-2 justify-content-center">
                     <div className="col-3 card mx-2 border-light stat-card">
                         <div className="card-body">
                             <h5 className="card-title">WINS</h5>
@@ -314,17 +340,16 @@ function GamesCard(props) {
 
 
                 <div className='d-flex mt-5 mb-0 justify-content-between'>
-                    <h4 className='experience-header'>DUO</h4>
+                    <h4 className='header-text'>DUO</h4>
                     <p>{gameData.duo.matches} Matches</p>
                 </div>
                 <hr />
                 {/* this is all duo stats */}
-                <div className="d-flex row stat-cluster text-center mx-2">
+                <div className="d-flex row stat-cluster text-center mx-2 justify-content-center">
                     <div className="col-3 card mx-2 border-light stat-card">
                         <div className="card-body">
                             <h5 className="card-title">WINS</h5>
                             <p className="card-text stat-number">{gameData.duo.wins}</p>
-
                         </div>
                     </div>
                     <div className="col-3 card mx-2 border-light stat-card">

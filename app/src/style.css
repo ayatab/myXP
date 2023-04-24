@@ -55,6 +55,10 @@ a {
   text-decoration: none;
 }
 
+.nav-item a:hover {
+  color:#B1C735;
+}
+
 .nav-text {
   font-size: 16px;
 }
@@ -66,13 +70,13 @@ a {
 /* ALL PROFILE CARD STUFF */
 
 .profile-card {
-  /* padding: 40px 60px; */
-  margin: 32px 32px 0px 32px;
+  padding: 0 0 15px 0;
+  margin: 50px 0 0 0;
   border-radius: 2em;
 }
 
 .profile-background {
-  height: 180px;
+  height: 250px;
   object-fit: cover;
   border-radius: 2em 2em 0 0;
 }
@@ -81,24 +85,90 @@ a {
   position: absolute;
   height: 7rem;
   width: 7rem;
-  bottom: 25%;
+  bottom: 32%;
   left: 5%
     /* transform: translate(30%, -125%); */
 }
 
-.gamer-tag {
+.tags {
   position: absolute;
+  bottom: 55%;
+  left: 14.5%
+}
+
+.tag {
+  height: 50px;
+  width: 50px;
+  margin-right: 25px;
+  /* margin-right: 10px; */
+}
+
+.edit-button {
+  padding-right: 25px;
+}
+
+.profile-card .btn {
+  padding-right: 10px;
+}
+
+/* test card */
+.header-card {
+  /* padding: 40px 60px; */
+  /* margin: 32px 32px 0px 32px; */
+  padding: 0 0 60px 0;
+  margin: 50px 0 0 0;
+  border-radius: 2em;
+  border-color: white;
+}
+
+.header-background {
+  height: 250px;
+  object-fit: cover;
+  border-radius: 2em 2em 0 0;
+}
+
+.header-img {
+  position: relative;
+  height: 7rem;
+  width: 7rem;
+  bottom: 50%;
+  left: 5%
+    /* transform: translate(30%, -125%); */
+}
+
+.name-block {
+  position: absolute;
+  bottom: 43%;
   padding-left: 12rem;
   margin-bottom: 0rem;
   text-align: center;
-  color: white;
-  font-weight: 700;
-  font-size: 24px;
+
+  /* font-family: 'all-round-gothic'; */
   /* left: 13%;
   top: 47%; */
   /* transform: translate(13%, -80%); */
   /* margin: max-content; */
   /* margin: auto; */
+}
+
+.gamer-tag {
+  font-family: 'all-round-gothic';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  color: white;
+  padding-right: 20px;
+}
+
+.real-name {
+  font-family: 'figtree';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #828282;
+  /* margin: 0; */
 }
 
 .card-body-height {
@@ -140,10 +210,21 @@ hr {
   height: 12rem;
 }
 
+.stat-card h5 {
+  font-family: 'all-round-gothic';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
 .stat-number {
+  font-family: 'all-round-gothic';
   font-size: 3em;
   font-weight: bold;
   color: #058F76;
+  font-size: 48px;
+  line-height: 56px;
 }
 
 /* EXPERIENCE CARD */
