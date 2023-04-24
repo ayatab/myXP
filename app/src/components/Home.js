@@ -32,11 +32,11 @@ export default function Home(props) {
                         <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@User#1</p>
                     </div>
                     <div className='d-flex h-auto mt-3 justify-content-center'>
-                        <img src='pics/anjuli.png' className='feed-img'></img>
+                        <img src='pics/justin.png' className='feed-img'></img>
                         <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@User#2</p>
                     </div>
                     <div className='d-flex h-auto mt-3 justify-content-center mb-2'>
-                        <img src='pics/victor.png' className='feed-img'></img>
+                        <img src='pics/ayata.png' className='feed-img'></img>
                         <p className='align-self-center fw-bold mb-0 ps-2 feed-font'>@User#3</p>
                     </div>
                     {/* <hr /> */}
