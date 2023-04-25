@@ -67,6 +67,23 @@ export default function Home(props) {
                         <button type="button" className="btn btn-dark feed-btn feed-font">Company</button>
                     </div>
 
+                    {chat.map(message => (
+                        <div className='card my-3 chat-messages streaming-card'>
+                            <div className='d-flex h-auto'>
+                                <img src='pics/helen.png' className='feed-img'></img>
+                                <p className='align-self-center fw-bold mb-0 ps-3 feed-font'>Me</p>
+                            </div>
+                            <p className='m-0 py-3'>{message}</p>
+                            <div className='d-flex justify-content-between py-2'>
+                                <FontAwesomeIcon icon="fa-solid fa-heart" className='pe-5 fs-4' />
+                                <FontAwesomeIcon icon="fa-solid fa-comment" className='pe-5 fs-4' />
+                                <FontAwesomeIcon icon="fa-solid fa-retweet" className='pe-5 fs-4' />
+                                <FontAwesomeIcon icon="fa-solid fa-share" className='pe-5 fs-4' />
+                            </div>
+                        </div>
+
+                    ))}
+
                     <div className='mt-1 row d-flex justify-content-center mx-2'>
                     {messages.map(message => (
                         <div className='card my-3 chat-messages streaming-card'>
@@ -84,22 +101,7 @@ export default function Home(props) {
                         </div>
 
                     ))}
-                    {chat.map(message => (
-                        <div className='card my-3 chat-messages streaming-card'>
-                            <div className='d-flex h-auto'>
-                                <img src='pics/helen.png' className='feed-img'></img>
-                                <p className='align-self-center fw-bold mb-0 ps-3 feed-font'>Me</p>
-                            </div>
-                            <p className='m-0 py-3'>{message}</p>
-                            <div className='d-flex justify-content-between py-2'>
-                                <FontAwesomeIcon icon="fa-solid fa-heart" className='pe-5 fs-4' />
-                                <FontAwesomeIcon icon="fa-solid fa-comment" className='pe-5 fs-4' />
-                                <FontAwesomeIcon icon="fa-solid fa-retweet" className='pe-5 fs-4' />
-                                <FontAwesomeIcon icon="fa-solid fa-share" className='pe-5 fs-4' />
-                            </div>
-                        </div>
-
-                    ))}
+                    
 
                 </div>
                 </div>
